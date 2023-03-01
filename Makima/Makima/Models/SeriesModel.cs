@@ -11,7 +11,7 @@ namespace Makima.Models
     {
         public string ID { get; set; }
         public string Name { get; set; }
-        public string Splash { get; set; }
+        public ImageSource Splash { get; set; }
         public IEnumerable<SeasonModel> Seasons { get; set; }
     }
 }

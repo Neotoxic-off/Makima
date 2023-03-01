@@ -52,8 +52,6 @@ namespace Makima.ViewModels
             Settings = new SettingsViewModel();
             Database = new DatabaseViewModel();
 
-            Console.WriteLine(Database.Database.Series.Count());
-
             Logger.Record("models loaded");
         }
 
