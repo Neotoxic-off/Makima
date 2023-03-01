@@ -1,2 +1,2 @@
 # Makima
-🐍 Makima is an illegal movie &amp; series manager
+🐍 Makima is an illegal series manager
