@@ -139,7 +139,7 @@
                                                             <RowDefinition Height="*"/>
                                                         </Grid.RowDefinitions>
                                                         <Grid Grid.Row="0" Margin="5">
-                                                            <Image Source="{Binding Splash}"/>
+                                                            <Image Source="{Binding Splash}" Height="450"/>
                                                         </Grid>
                                                         <Grid Grid.Row="1" Background="{StaticResource Panel}" Margin="10"/>
                                                         <TextBlock Grid.Row="2" Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>

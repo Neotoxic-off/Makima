@@ -56,7 +56,7 @@ namespace Makima.ViewModels
                 }
             }
 
-            return (new Uri(@"/Makima;component/Assets/Placeholder.png", UriKind.Relative));
+            return (new Uri("https://raw.githubusercontent.com/Neotoxic-off/Makima/main/Assets/Placeholder.png"));
         }
     }
 }
