@@ -56,7 +56,7 @@ namespace Makima.ViewModels
                 }
             }
 
-            return (new Uri("https://townofmaringouin.net/wp-content/uploads/image-placeholder-500x500-1.jpg"));
+            return (new Uri(@"/Makima;component/Assets/Placeholder.png", UriKind.Relative));
         }
     }
 }
