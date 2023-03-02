@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -53,7 +52,7 @@ namespace Makima.ViewModels
                 seachModel = JsonConvert.DeserializeObject<Models.SeachModel>(await response.Content.ReadAsStringAsync());
                 if (seachModel.results.Count() > 0)
                 {
-                    return (new Uri($"https://image.tmdb.org/t/p/original/{seachModel.results[0].poster_path}"));
+                    return (new Uri($"https://image.tmdb.org/t/p/original{seachModel.results[0].poster_path}"));
                 }
             }
 

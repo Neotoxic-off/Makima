@@ -2,10 +2,12 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 using System.Windows.Media.Imaging;
 
 namespace Makima.ViewModels
@@ -14,12 +16,23 @@ namespace Makima.ViewModels
     {
         private string Root { get; set; }
         private string Extension { get; set; }
-        private CacheViewModel Cache { get; set; }
-        private Models.DatabaseModel _database;
-        public Models.DatabaseModel Database
+        private CacheViewModel _cache;
+        public CacheViewModel Cache
+        {
+            get { return _cache; }
+            set { SetProperty(ref _cache, value); }
+        }
+        private DatabaseModel _database;
+        public DatabaseModel Database
         {
             get { return _database; }
             set { SetProperty(ref _database, value); }
+        }
+        private ObservableCollection<SeriesModel> _library;
+        public ObservableCollection<SeriesModel> Library
+        {
+            get { return _library; }
+            set { SetProperty(ref _library, value); }
         }
 
         public DatabaseViewModel()
@@ -27,6 +40,11 @@ namespace Makima.ViewModels
             Root = "Library";
             Extension = "mlf";
             Cache = new CacheViewModel();
+            Library = new ObservableCollection<SeriesModel>();
+            Database = new DatabaseModel()
+            {
+                Series = new ObservableCollection<SeriesModel>()
+            };
 
             Initialize();
             Load();
@@ -40,49 +58,24 @@ namespace Makima.ViewModels
             }
         }
 
-        private async void Load()
+        private void Load()
         {
-            Models.DatabaseModel data = null;
+            DatabaseModel data = null;
             string[] files = Directory.GetFiles(Root, $"*.{Extension}", SearchOption.AllDirectories);
 
-            Database = new Models.DatabaseModel()
-            {
-                Series = new List<Models.SeriesModel>()
-                {
-                    new Models.SeriesModel()
-                    {
-                        Name = "lycoris recoil",
-                        Splash = new BitmapImage(await Cache.Search("lycoris recoil"))
-                    },
-                    new Models.SeriesModel()
-                    {
-                        Name = "chainsawman",
-                        Splash = new BitmapImage(await Cache.Search("chainsawman"))
-                    },
-                    new Models.SeriesModel()
-                    {
-                        Name = "sword art online",
-                        Splash = new BitmapImage(await Cache.Search("sword art online"))
-                    }
-                }
-            };
 
             foreach (string file in files)
             {
-                data = JsonConvert.DeserializeObject<Models.DatabaseModel>(File.ReadAllText(file));
-                Database.Series.AddRange(data.Series);
+                data = JsonConvert.DeserializeObject<DatabaseModel>(File.ReadAllText(file));
+                AddSeriesToDatabase(data.Series);
             }
-        }
-
-        private void Refresh()
-        {
-
         }
 
         public async void Add(string path)
         {
             string[] series = null;
-            Models.DatabaseModel db = null;
+            DatabaseModel db = null;
+            SeriesModel series_model = null;
 
             if (Directory.Exists(path) == true)
             {
@@ -90,16 +83,28 @@ namespace Makima.ViewModels
                 {
                     Path = path,
                     ID = $"{path.GetHashCode()}",
-                    Series = new List<Models.SeriesModel>()
+                    Series = new ObservableCollection<Models.SeriesModel>()
                 };
                 series = Directory.GetDirectories(path);
                 foreach (string folder in series)
                 {
-                    db.Series.Add(await Series(folder, GetName(folder)));
+                    series_model = await Series(folder, GetName(folder));
+                    if (db.Series.Contains(series_model) == false)
+                    {
+                        db.Series.Add(series_model);
+                    }
                 }
+                Save(db);
+                AddSeriesToDatabase(db.Series);
             }
+        }
 
-            Save(db);
+        private void AddSeriesToDatabase(ObservableCollection<SeriesModel> series)
+        {
+            foreach (SeriesModel seriesModel in series)
+            {
+                Database.Series.Add(seriesModel);
+            }
         }
 
         private async Task<SeriesModel> Series(string path, string name)
@@ -109,7 +114,8 @@ namespace Makima.ViewModels
             {
                 Name = name,
                 ID = $"{name.GetHashCode()}",
-                Seasons = new List<SeasonModel>(),
+                Seasons = new ObservableCollection<SeasonModel>(),
+                SeasonsWatched = new ObservableCollection<SeasonModel>(),
                 Splash = new BitmapImage(await Cache.Search(name))
             };
 
@@ -128,8 +134,8 @@ namespace Makima.ViewModels
             {
                 Name = name,
                 ID = $"{name.GetHashCode()}",
-                Episodes = new List<EpisodeModel>(),
-                EpisodesWatched = new List<EpisodeModel>()
+                Episodes = new ObservableCollection<EpisodeModel>(),
+                EpisodesWatched = new ObservableCollection<EpisodeModel>()
             };
 
             foreach (string file in files)
@@ -162,6 +168,34 @@ namespace Makima.ViewModels
                 }
             }
             return (null);
+        }
+
+        public void MoveRight()
+        {
+            SeriesModel buffer = null;
+            int count = Database.Series.Count();
+
+            if (count > 0)
+            {
+                buffer = Database.Series[0];
+                Database.Series.RemoveAt(0);
+                Database.Series.Add(buffer);
+            }
+        }
+
+        public void MoveLeft()
+        {
+            SeriesModel buffer = null;
+            int count = Database.Series.Count();
+
+            if (count > 0)
+            {
+                Console.WriteLine($"Left move: {Database.Series[0].ID}");
+                buffer = Database.Series[count - 1];
+                Database.Series.RemoveAt(count - 1);
+                Database.Series.Insert(0, buffer);
+                Console.WriteLine($"Left move: {Database.Series[0].ID}");
+            }
         }
 
         private void Save(Models.DatabaseModel db)

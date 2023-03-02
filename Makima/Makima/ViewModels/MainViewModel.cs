@@ -23,6 +23,8 @@ namespace Makima.ViewModels
         public DatabaseViewModel Database { get; set; }
 
         public DelegateCommand AddLibraryCommand { get; set; }
+        public DelegateCommand RightArrowCommand { get; set; }
+        public DelegateCommand LeftArrowCommand { get; set; }
         public DelegateCommand SendCommand { get; set; }
         public DelegateCommand GithubCommand { get; set; }
         public DelegateCommand DiscordCommand { get; set; }
@@ -62,6 +64,8 @@ namespace Makima.ViewModels
             Logger.Record("loading commands");
 
             AddLibraryCommand = new DelegateCommand(AddLibrary);
+            RightArrowCommand = new DelegateCommand(RightArrow);
+            LeftArrowCommand = new DelegateCommand(LeftArrow);
 
             GithubCommand = new DelegateCommand(Github);
             DiscordCommand = new DelegateCommand(Discord);
@@ -76,6 +80,16 @@ namespace Makima.ViewModels
             {
                 Database.Add(FolderSelector.SelectedPath);
             }
+        }
+
+        private void RightArrow(object data)
+        {
+            Database.MoveRight();
+        }
+
+        private void LeftArrow(object data)
+        {
+            Database.MoveLeft();
         }
 
         private void Github(object data)
