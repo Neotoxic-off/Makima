@@ -10,8 +10,8 @@
         WindowStartupLocation="CenterScreen"
         Background="{StaticResource Background}"
         Foreground="{StaticResource Normal}"
-        Height="700"
-        Width="900"
+        Height="800"
+        Width="1000"
         MinHeight="650"
         MinWidth="500"
         Title="{Binding Settings.Version}">
@@ -130,7 +130,7 @@
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Margin="10" Background="Transparent" Width="200">
+                                        <Border Margin="10" Background="Transparent" Width="250">
                                             <Border.Style>
                                                 <Style TargetType="Border">
                                                     <Setter Property="BorderThickness" Value="1"/>
@@ -175,7 +175,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <Button Style="{StaticResource FullButtonGreen}" Command="{Binding CodeCommand}" Content="Add library" Margin="10,0,10,0"/>
+                            <Button Style="{StaticResource FullButtonGreen}" Command="{Binding AddLibraryCommand}" Content="Add library" Margin="10,0,10,0"/>
                         </Grid>
                     </Grid>
                 </Grid>

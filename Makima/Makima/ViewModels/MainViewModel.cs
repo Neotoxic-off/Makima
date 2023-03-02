@@ -10,6 +10,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Ookii.Dialogs.Wpf;
 
 namespace Makima.ViewModels
 {
@@ -17,11 +18,11 @@ namespace Makima.ViewModels
     {
         public SettingsViewModel Settings { get; set; }
         public LoggerViewModel Logger { get; set; }
+        private VistaFolderBrowserDialog FolderSelector { get; set; }
 
         public DatabaseViewModel Database { get; set; }
 
-        public DelegateCommand ConnectCommand { get; set; }
-        public DelegateCommand DisconnectCommand { get; set; }
+        public DelegateCommand AddLibraryCommand { get; set; }
         public DelegateCommand SendCommand { get; set; }
         public DelegateCommand GithubCommand { get; set; }
         public DelegateCommand DiscordCommand { get; set; }
@@ -41,6 +42,7 @@ namespace Makima.ViewModels
             Logger.Record("loading client");
 
             Settings.LoadVersion();
+            FolderSelector = new VistaFolderBrowserDialog();
 
             Logger.Record("client loaded");
         }
@@ -59,11 +61,21 @@ namespace Makima.ViewModels
         {
             Logger.Record("loading commands");
 
+            AddLibraryCommand = new DelegateCommand(AddLibrary);
+
             GithubCommand = new DelegateCommand(Github);
             DiscordCommand = new DelegateCommand(Discord);
             CodeCommand = new DelegateCommand(Code);
 
             Logger.Record("commands loaded");
+        }
+
+        private void AddLibrary(object data)
+        {
+            if (FolderSelector.ShowDialog() == true)
+            {
+                Database.Add(FolderSelector.SelectedPath);
+            }
         }
 
         private void Github(object data)

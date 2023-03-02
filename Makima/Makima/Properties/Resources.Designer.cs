@@ -59,5 +59,14 @@ namespace Makima.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à e3b65f8fd4a9f70b9226015230eb606c.
+        /// </summary>
+        internal static string api_key {
+            get {
+                return ResourceManager.GetString("api_key", resourceCulture);
+            }
+        }
     }
 }

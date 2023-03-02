@@ -10,7 +10,7 @@ namespace Makima.Models
     {
         public string ID { get; set; }
         public string Name { get; set; }
-        public IEnumerable<EpisodeModel> Episodes { get; set; }
-        public IEnumerable<EpisodeModel> EpisodesWatched { get; set; }
+        public List<EpisodeModel> Episodes { get; set; }
+        public List<EpisodeModel> EpisodesWatched { get; set; }
     }
 }

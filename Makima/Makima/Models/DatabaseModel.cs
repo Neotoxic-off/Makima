@@ -8,6 +8,8 @@ namespace Makima.Models
 {
     public class DatabaseModel: BaseModel
     {
-        public IEnumerable<SeriesModel> Series { get; set; }
+        public string ID { get; set; }
+        public string Path { get; set; }
+        public List<SeriesModel> Series { get; set; }
     }
 }
