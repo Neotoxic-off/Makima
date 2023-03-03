@@ -66,6 +66,7 @@
                         <RowDefinition Height="75"/>
                         <RowDefinition Height="1"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
@@ -156,9 +157,12 @@
                         <Button Width="40" Height="40" Grid.Column="2" Style="{StaticResource RoundButton}" Command="{Binding RightArrowCommand}">
                             <Path Data="{StaticResource ArrowRight}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
                         </Button>
-                        
                     </Grid>
 
+
+                    <ToggleButton Grid.Row="3" Template="{StaticResource ModernToggle}">
+
+                    </ToggleButton>
                 </Grid>
             </Border>
         </Grid>
