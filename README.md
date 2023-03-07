@@ -22,7 +22,7 @@
 - Windows 11 (x64)
 
 ## Information
-- Development environment: Windows 11 (x64)
+- Development environment: Windows 11 v22H2 (x64)
 
 ## Requirements
 - .NET *6.0*
