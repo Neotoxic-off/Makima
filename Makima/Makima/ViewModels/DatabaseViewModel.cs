@@ -148,6 +148,7 @@ namespace Makima.ViewModels
                         db.Series.Add(series_model);
                     }
                 }
+                Collection.Add(db);
                 Save(db);
                 AddSeriesToDatabase(db.Series);
             }
@@ -204,7 +205,9 @@ namespace Makima.ViewModels
                 foreach (string extension in extensions)
                 {
                     if (file.EndsWith($".{extension}") == true)
+                    {
                         model.Episodes.Add(Episode(GetName(file)));
+                    }
                 }
             }
 

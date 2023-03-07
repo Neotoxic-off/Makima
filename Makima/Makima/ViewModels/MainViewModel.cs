@@ -101,6 +101,10 @@ namespace Makima.ViewModels
             } else
             {
                 Logger.Record("episode not found in collections");
+                foreach (DatabaseModel model in Database.Collection)
+                {
+                    Console.WriteLine(model.Series.Count());
+                }
             }
         }
 
