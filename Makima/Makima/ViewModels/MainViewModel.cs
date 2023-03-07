@@ -16,6 +16,12 @@ namespace Makima.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        private SeriesModel _selected_series;
+        public SeriesModel SelectedSeries
+        {
+            get { return _selected_series; }
+            set { SetProperty(ref _selected_series, value); }
+        }
         public SettingsViewModel Settings { get; set; }
         public LoggerViewModel Logger { get; set; }
         private VistaFolderBrowserDialog FolderSelector { get; set; }
@@ -29,6 +35,8 @@ namespace Makima.ViewModels
         public DelegateCommand GithubCommand { get; set; }
         public DelegateCommand DiscordCommand { get; set; }
         public DelegateCommand CodeCommand { get; set; }
+        public DelegateCommand GetSelectedCommand { get; set; }
+        public DelegateCommand WatchCommand { get; set; }
 
         public MainViewModel()
         {
@@ -71,14 +79,53 @@ namespace Makima.ViewModels
             DiscordCommand = new DelegateCommand(Discord);
             CodeCommand = new DelegateCommand(Code);
 
+            GetSelectedCommand = new DelegateCommand(GetSelected);
+            WatchCommand = new DelegateCommand(Watch);
+
             Logger.Record("commands loaded");
+        }
+
+        private void Watch(object data)
+        {
+            string path = null;
+            DatabaseModel db = Database.Search(SelectedSeries);
+
+            if (db != null)
+            {
+                Logger.Record("episode found in database");
+                path = $"{db.Path}/{SelectedSeries.Name}/{SelectedSeries.LatestSeason.Name}/{SelectedSeries.LatestEpisode.Name}";
+                Logger.Record("updating series in database");
+                Database.Update(SelectedSeries);
+                Logger.Record("starting episode");
+                System.Diagnostics.Process.Start(path);
+            } else
+            {
+                Logger.Record("episode not found in collections");
+            }
+        }
+
+        private void GetSelected(object data)
+        {
+            Logger.Record($"searching series {data}");
+            SelectedSeries = Database.Search($"{data}");
+
+            if (SelectedSeries != null)
+            {
+                Logger.Record($"series {data} loaded");
+            }
+            else
+            {
+                Logger.Record($"series {data} not loaded");
+            }
         }
 
         private void AddLibrary(object data)
         {
             if (FolderSelector.ShowDialog() == true)
             {
+                Logger.Record("adding library");
                 Database.Add(FolderSelector.SelectedPath);
+                Logger.Record("library added");
             }
         }
 

@@ -38,16 +38,16 @@
 - [X] Load latest episode
 - [X] Find splash
 - [X] Prevent series duplication
+- [X] Files extensions filter: `["mp4", "mov", "avi", "mkv"]`
+- [X] Database format documentation
+- [X] Multi databases support
 
 ## Tasks
 - [ ] Graphical charter: `https://colorhunt.co/`
 - [ ] Single exe file (no dll): `https://learn.microsoft.com/en-us/dotnet/core/deploying/single-file/overview?tabs=cli`
 - [ ] Multilingual support: `https://www.codeproject.com/Articles/123460/Simplest-Way-to-Implement-Multilingual-WPF-Applica`
-- [ ] Files extensions filter: `["mp4", "mov", "avi", "mkv"]`
-- [ ] Database format documentation
 - [ ] Tutorial
 - [ ] Add patch-notes for each update
-- [ ] Multi databases support
 - [ ] Display databases count
 - [ ] Vidéo tutorial
 - [ ] Set splash in cache

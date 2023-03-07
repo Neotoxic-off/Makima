@@ -22,6 +22,13 @@ namespace Makima.Models
             set { SetProperty(ref _path, value); }
         }
 
+        private SeriesModel _selected_series;
+        public SeriesModel SelectedSeries
+        {
+            get { return _selected_series; }
+            set { SetProperty(ref _selected_series, value); }
+        }
+
         private ObservableCollection<SeriesModel> _series;
         public ObservableCollection<SeriesModel> Series
         {

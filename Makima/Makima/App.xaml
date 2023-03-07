@@ -5,9 +5,10 @@
              StartupUri="Views/MainWindow.xaml">
   
     <Application.Resources>
-        <Brush x:Key="Background">#040303</Brush>
-        <Brush x:Key="Borders">#040303</Brush>
-        <Brush x:Key="Panel">#2C394B</Brush>
+        <Brush x:Key="Background">#000000</Brush>
+        <Brush x:Key="Borders">#000000</Brush>
+        <Brush x:Key="Panel">#191825</Brush>
+        <Brush x:Key="Hover">#393053</Brush>
         <Brush x:Key="Normal">#ECECE8</Brush>
         <Brush x:Key="Pink">#FF8DC7</Brush>
         <Brush x:Key="PinkHover">#EC8DC7</Brush>
@@ -36,7 +37,8 @@
 
         <Geometry x:Key="Collection">M5.9897,3 C7.0937,3 7.9897,3.896 7.9897,5 L7.9897,23 C7.9897,24.104 7.0937,25 5.9897,25 L4.0007,25 C2.8957,25 2.0007,24.104 2.0007,23 L2.0007,5 C2.0007,3.896 2.8957,3 4.0007,3 L5.9897,3 Z M12.9897,3 C14.0937,3 14.9897,3.896 14.9897,5 L14.9897,23 C14.9897,24.104 14.0937,25 12.9897,25 L10.9947,25 C9.8897,25 8.9947,24.104 8.9947,23 L8.9947,5 C8.9947,3.896 9.8897,3 10.9947,3 L12.9897,3 Z M22.0701,6.5432 L25.9301,22.0262 C26.1971,23.0972 25.5441,24.1832 24.4731,24.4512 L22.5101,24.9402 C21.4391,25.2072 20.3531,24.5552 20.0861,23.4832 L16.2261,8.0002 C15.9581,6.9282 16.6111,5.8432 17.6821,5.5752 L19.6451,5.0862 C20.7161,4.8182 21.8021,5.4712 22.0701,6.5432 Z</Geometry>
         <Geometry x:Key="Build">M11.967.304 0 7.215v9.68l11.79 6.802V14.02l11.96-6.91-4.383-2.53-11.959 6.905v3.887l-2.775-1.601V9.886l11.965-6.91zM24 7.545 12.29 14.31v9.387L24 16.929V7.547z</Geometry>
-
+        <Geometry x:Key="Database">M152.767,3.889C82.293,3.889,0,19.156,0,62.19v175.638c0,12.015,8.061,27.271,18.743,32.765 c24.22,12.461,70.762,31.046,132.985,31.046c0.218,0,0.446,0,0.664,0c62.571-0.109,109.766-18.689,134.28-31.068 c10.731-5.412,18.857-20.571,18.857-32.585V62.196C305.534,19.162,223.241,3.889,152.767,3.889z M152.767,41.962 c61.581,0,100.378,12.026,112.17,20.228c-11.792,8.202-50.589,20.233-112.17,20.233S52.389,70.398,40.597,62.196 C52.389,53.994,91.186,41.962,152.767,41.962z M267.461,239.167c-15.529,8.191-53.841,24.291-115.129,24.4 c-0.201,0-0.392,0-0.593,0c-60.189,0-98.306-16.214-113.666-24.362v-47.537c22.697,7.957,59.302,15.855,115.27,15.855 c55.435,0,91.61-7.778,114.112-15.692v47.336H267.461z M267.461,150.651c-13.124,6.521-46.787,18.797-114.117,18.797 c-67.526,0-101.803-12.358-115.27-18.933v-47.276c30.426,12.271,74.477,17.258,114.694,17.258s84.267-4.988,114.694-17.253V150.651 z</Geometry>
+        
         <Geometry x:Key="ArrowRight">M10.25 16.25C10.1493 16.2466 10.0503 16.2227 9.95921 16.1797C9.86807 16.1367 9.78668 16.0756 9.72001 16C9.57956 15.8594 9.50067 15.6688 9.50067 15.47C9.50067 15.2713 9.57956 15.0806 9.72001 14.94L12.72 11.94L9.72001 8.94002C9.66069 8.79601 9.64767 8.63711 9.68277 8.48536C9.71786 8.33361 9.79933 8.19656 9.91586 8.09322C10.0324 7.98988 10.1782 7.92538 10.3331 7.90868C10.4879 7.89198 10.6441 7.92391 10.78 8.00002L14.28 11.5C14.4205 11.6407 14.4994 11.8313 14.4994 12.03C14.4994 12.2288 14.4205 12.4194 14.28 12.56L10.78 16C10.7133 16.0756 10.6319 16.1367 10.5408 16.1797C10.4497 16.2227 10.3507 16.2466 10.25 16.25Z</Geometry>
         <Geometry x:Key="ArrowLeft">M13.75 16.25C13.6515 16.2505 13.5538 16.2313 13.4628 16.1935C13.3718 16.1557 13.2893 16.1001 13.22 16.03L9.72001 12.53C9.57956 12.3894 9.50067 12.1988 9.50067 12C9.50067 11.8013 9.57956 11.6107 9.72001 11.47L13.22 8.00003C13.361 7.90864 13.5285 7.86722 13.6958 7.88241C13.8631 7.89759 14.0205 7.96851 14.1427 8.08379C14.2649 8.19907 14.3448 8.35203 14.3697 8.51817C14.3946 8.68431 14.363 8.85399 14.28 9.00003L11.28 12L14.28 15C14.4205 15.1407 14.4994 15.3313 14.4994 15.53C14.4994 15.7288 14.4205 15.9194 14.28 16.06C14.1353 16.1907 13.9448 16.259 13.75 16.25Z</Geometry>
 
@@ -111,7 +113,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
-                                <Border Background="{StaticResource Panel}"
+                                <Border Background="{StaticResource Hover}"
                                     CornerRadius="5"
                                     BorderThickness="0">
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -124,7 +126,6 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
 
         <Style TargetType="Button" x:Key="FullButtonGreen">
             <Setter Property="Background" Value="{StaticResource Green}"/>
@@ -278,29 +279,6 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="Foreground" Value="{StaticResource Normal}"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="Button">
-                                <Border Background="{TemplateBinding Background}"
-                                    CornerRadius="5"
-                                    BorderThickness="2"
-                                    BorderBrush="{StaticResource Green}">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
-
-                                    </ContentPresenter>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" Value="{StaticResource Disabled}"/>
-                </Trigger>
-            </Style.Triggers>
         </Style>
 
         <Style TargetType="Button" x:Key="RoundButton">
@@ -452,40 +430,124 @@
         </Style>
 
         <ControlTemplate TargetType="{x:Type ToggleButton}" x:Key="ModernToggle">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="60"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+            <Grid x:Name="Panel">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                    <Grid Grid.Column="0" Background="{StaticResource Panel}" Height="1"/>
-                    <Grid Grid.Column="1" Margin="5">
-                        <Button Style="{StaticResource FillButton}">
-                            <Path x:Name="Sign" Grid.Row="0" VerticalAlignment="Center" Margin="5" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform" Data="{StaticResource ArrowExpand}">
-                                <Path.LayoutTransform>
-                                    <RotateTransform Angle="90"/>
-                                </Path.LayoutTransform>
-                            </Path>
-                        </Button>
+                    <Grid x:Name="Split1" Grid.Row="0" Background="{StaticResource Panel}" Width="1"/>
+                    <Grid Grid.Row="1" Margin="5">
+                        <Border x:Name="Border" CornerRadius="5" BorderThickness="1" BorderBrush="{StaticResource Panel}" Background="{StaticResource Background}">
+                            <Path x:Name="Sign" VerticalAlignment="Center" Margin="5" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform" Data="{StaticResource ArrowLeft}"/>
+                        </Border>
                     </Grid>
-                    <Grid Grid.Column="2" Background="{StaticResource Panel}" Height="1"/>
-                    <ContentPresenter x:Name="HeaderContent" Grid.Column="1" Margin="4,0,0,0" ContentSource="Content"/>
+                    <Grid x:Name="Split2" Grid.Row="2" Background="{StaticResource Panel}" Width="1"/>
                 </Grid>
+                <ContentPresenter Grid.Column="1" x:Name="HeaderContent" Margin="4,0,0,0" ContentSource="Content"/>
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsChecked" Value="True">
-                    
+                    <Setter Property="Fill" Value="{StaticResource ResourceKey='Normal'}" TargetName="Sign"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource ResourceKey='Panel'}" TargetName="Border"/>
+                    <Setter Property="Background" Value="{StaticResource ResourceKey='Normal'}" TargetName="Split1"/>
+                    <Setter Property="Background" Value="{StaticResource ResourceKey='Normal'}" TargetName="Split2"/>
+                    <Setter Property="Width" Value="350" TargetName="Panel"/>
+                    <Setter Property="Data" Value="{StaticResource ResourceKey='ArrowRight'}" TargetName="Sign"/>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="Width" Value="60" TargetName="Panel"/>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="true">
-                    <Setter Property="Fill" Value="#ECECE8" TargetName="Sign"/>
+                    <Setter Property="Fill" Value="{StaticResource ResourceKey='Normal'}" TargetName="Sign"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource ResourceKey='Normal'}" TargetName="Border"/>
+                    <Setter Property="Background" Value="{StaticResource ResourceKey='Normal'}" TargetName="Split1"/>
+                    <Setter Property="Background" Value="{StaticResource ResourceKey='Normal'}" TargetName="Split2"/>
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+
+        <!-- Flat ComboBox -->
+        <ControlTemplate TargetType="ToggleButton" x:Key="ComboBoxToggleButtonTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.ColumnSpan="2" Name="Border" BorderBrush="{StaticResource Panel}" CornerRadius="5" BorderThickness="1, 1, 1, 1" Background="{StaticResource Background}" />
+                <Border Grid.Column="1" Margin="1" BorderBrush="{StaticResource Panel}" Name="ButtonBorder" CornerRadius="5" BorderThickness="0" Background="{StaticResource Background}"/>
+                <Path Name="Arrow" Grid.Column="1" Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z" HorizontalAlignment="Center" Fill="#444" VerticalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="UIElement.IsMouseOver" Value="True">
+                    <Setter Property="Panel.Background" TargetName="ButtonBorder" Value="{StaticResource Background}"/>
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Panel.Background" TargetName="ButtonBorder" Value="{StaticResource Background}"/>
+                    <Setter Property="Shape.Fill" TargetName="Arrow" Value="{StaticResource Panel}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="ComboBoxFlatStyle" TargetType="{x:Type ComboBox}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="{StaticResource Background}"/>
+            <Setter Property="Foreground" Value="{StaticResource Normal}"/>
+            <Setter Property="UIElement.SnapsToDevicePixels" Value="True"/>
+            <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+            <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton Name="ToggleButton" Grid.Column="2" ClickMode="Press" Focusable="False" IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" Template="{StaticResource ComboBoxToggleButtonTemplate}"/>
+                            <ContentPresenter Name="ContentSite" Margin="5, 3, 23, 3" IsHitTestVisible="False" HorizontalAlignment="Left" VerticalAlignment="Center" Content="{TemplateBinding ComboBox.SelectionBoxItem}" ContentTemplate="{TemplateBinding ComboBox.SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
+                            <TextBox Name="PART_EditableTextBox" Margin="3, 3, 23, 3" IsReadOnly="{TemplateBinding IsReadOnly}" Visibility="Hidden" Background="{StaticResource Background}" HorizontalAlignment="Left" VerticalAlignment="Center" Focusable="True">
+                                <TextBox.Template>
+                                    <ControlTemplate TargetType="TextBox">
+                                        <Border Name="PART_ContentHost" Focusable="False"/>
+                                    </ControlTemplate>
+                                </TextBox.Template>
+                            </TextBox>
+                            <!-- Popup showing items -->
+                            <Popup Name="Popup" Placement="Bottom" Focusable="False" AllowsTransparency="True" IsOpen="{TemplateBinding ComboBox.IsDropDownOpen}" PopupAnimation="Slide">
+                                <Grid Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding FrameworkElement.ActualWidth}" MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}">
+                                    <Border Name="DropDownBorder" Background="{StaticResource Background}" Margin="0, 1, 0, 0" CornerRadius="5" BorderThickness="1" BorderBrush="{StaticResource Panel}"/>
+                                    <ScrollViewer Margin="4" SnapsToDevicePixels="True">
+                                        <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="ItemsControl.HasItems" Value="False">
+                                <Setter Property="FrameworkElement.MinHeight" TargetName="DropDownBorder" Value="95"/>
+                            </Trigger>
+                            <Trigger Property="UIElement.IsEnabled" Value="False">
+                                <Setter Property="TextElement.Foreground" Value="{StaticResource Normal}"/>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.IsGrouping" Value="True">
+                                <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+                            </Trigger>
+                            <Trigger Property="ComboBox.IsEditable" Value="True">
+                                <Setter Property="KeyboardNavigation.IsTabStop" Value="False"/>
+                                <Setter Property="UIElement.Visibility" TargetName="PART_EditableTextBox" Value="Visible"/>
+                                <Setter Property="UIElement.Visibility" TargetName="ContentSite" Value="Hidden"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- End of Flat ComboBox -->
     </Application.Resources>
 </Application>

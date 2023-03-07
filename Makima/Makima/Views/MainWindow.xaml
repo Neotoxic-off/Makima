@@ -10,10 +10,10 @@
         WindowStartupLocation="CenterScreen"
         Background="{StaticResource Background}"
         Foreground="{StaticResource Normal}"
-        Height="800"
+        Height="900"
         Width="1200"
         MinHeight="800"
-        MinWidth="500"
+        MinWidth="575"
         Title="{Binding Settings.Version}">
 
     <Window.DataContext>
@@ -66,7 +66,8 @@
                         <RowDefinition Height="75"/>
                         <RowDefinition Height="1"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="75"/>
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
@@ -100,69 +101,92 @@
                         </Grid>
                     </Grid>
 
-                    <Grid Grid.Row="1" Background="{StaticResource Panel}">
-
-                    </Grid>
+                    <Grid Grid.Row="1" Background="{StaticResource Panel}"/>
 
                     <Grid Grid.Row="2" VerticalAlignment="Center" Margin="10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Button Width="40" Height="40"  Grid.Column="0" Style="{StaticResource RoundButton}" Command="{Binding LeftArrowCommand}">
-                            <Path Data="{StaticResource ArrowLeft}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
-                        </Button>
+                            <Button Width="40" Height="40" Grid.Column="0" Style="{StaticResource RoundButton}" Command="{Binding LeftArrowCommand}">
+                                <Path Data="{StaticResource ArrowLeft}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
+                            </Button>
 
-                        <StackPanel Grid.Column="1">
-                            <ItemsControl ItemsSource="{Binding Database.Database.Series}">
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal"/>
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border Margin="10" Background="Transparent" Width="300">
-                                            <Border.Style>
-                                                <Style TargetType="Border">
-                                                    <Setter Property="BorderThickness" Value="1"/>
-                                                </Style>
-                                            </Border.Style>
-                                            <Button Style="{StaticResource InvisibleButton}" Command="{Binding P}">
-                                                <Border BorderBrush="{StaticResource Panel}" CornerRadius="5" BorderThickness="1">
-                                                    <Grid>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="*"/>
-                                                            <RowDefinition Height="1"/>
-                                                            <RowDefinition Height="*"/>
-                                                            <RowDefinition Height="*"/>
-                                                        </Grid.RowDefinitions>
-                                                        <Grid Grid.Row="0" Margin="5">
-                                                            <Image Source="{Binding Splash}" Height="450"/>
+                            <StackPanel Grid.Column="1">
+                                <ItemsControl x:Name="Series" ItemsSource="{Binding Database.Database.Series}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Margin="10" Background="Transparent" Width="300">
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Setter Property="BorderThickness" Value="1"/>
+                                                    </Style>
+                                                </Border.Style>
+                                                <Button Style="{StaticResource InvisibleButton}" Command="{Binding ElementName=Series, Path=DataContext.GetSelectedCommand}" CommandParameter="{Binding Name}">
+                                                    <Border BorderBrush="{StaticResource Panel}" CornerRadius="5" BorderThickness="1">
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="*"/>
+                                                                <RowDefinition Height="1"/>
+                                                                <RowDefinition Height="*"/>
+                                                                <RowDefinition Height="*"/>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid Grid.Row="0" Margin="5">
+                                                                <Image Source="{Binding Splash}" Height="450"/>
+                                                            </Grid>
+                                                            <Grid Grid.Row="1" Background="{StaticResource Panel}" Margin="10"/>
+                                                            <TextBlock Grid.Row="2" Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
+                                                            <TextBlock Grid.Row="3" Text="{Binding Seasons.Count, StringFormat='Seasons: {0}'}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
                                                         </Grid>
-                                                        <Grid Grid.Row="1" Background="{StaticResource Panel}" Margin="10"/>
-                                                        <TextBlock Grid.Row="2" Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
-                                                        <TextBlock Grid.Row="3" Text="{Binding Seasons.Count, StringFormat='Seasons: {0}'}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
-                                                    </Grid>
-                                                </Border>
-                                            </Button>
-                                        </Border>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </StackPanel>
+                                                    </Border>
+                                                </Button>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
 
-                        <Button Width="40" Height="40" Grid.Column="2" Style="{StaticResource RoundButton}" Command="{Binding RightArrowCommand}">
-                            <Path Data="{StaticResource ArrowRight}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
-                        </Button>
+                            <Button Width="40" Height="40" Grid.Column="2" Style="{StaticResource RoundButton}" Command="{Binding RightArrowCommand}">
+                                <Path Data="{StaticResource ArrowRight}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
+                            </Button>
+                        </Grid>
                     </Grid>
 
+                    <Grid Grid.Row="3" Background="{StaticResource Panel}"/>
 
-                    <ToggleButton Grid.Row="3" Template="{StaticResource ModernToggle}">
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="75"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
 
-                    </ToggleButton>
+                        <Label Grid.Column="0" Content="Season:" Foreground="{StaticResource Normal}" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                        <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxFlatStyle}" ItemsSource="{Binding SelectedSeries.Seasons}" SelectedItem="{Binding SelectedSeries.LatestSeason, Mode=TwoWay}" DisplayMemberPath="Name"/>
+
+                        <Label Grid.Column="3" Content="Episode:" Foreground="{StaticResource Normal}" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                        <ComboBox Grid.Column="4" Style="{StaticResource ComboBoxFlatStyle}" ItemsSource="{Binding SelectedSeries.LatestSeason.Episodes}" SelectedItem="{Binding SelectedSeries.LatestEpisode, Mode=TwoWay}" DisplayMemberPath="Name"/>
+
+                        <Grid Grid.Column="6">
+                            <Button Style="{StaticResource FullButtonPink}" Command="{Binding WatchCommand}" Content="Watch"/>
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Border>
         </Grid>
@@ -171,6 +195,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="50"/>
@@ -188,7 +214,7 @@
             </Grid>
 
             <Grid Grid.Column="2" Margin="10">
-                <Button Style="{StaticResource RoundButton}" Command="{Binding DiscordCommand}">
+                <Button Style="{StaticResource RoundButton}">
                     <Path Data="{StaticResource Build}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
                 </Button>
             </Grid>
@@ -198,12 +224,22 @@
             </Grid>
 
             <Grid Grid.Column="4">
-                <Button Style="{StaticResource RoundButton}" Command="{Binding GithubCommand}">
-                    <Path Data="{StaticResource Collection}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
+                <Button Style="{StaticResource RoundButton}">
+                    <Path Data="{StaticResource Database}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
                 </Button>
             </Grid>
 
             <Grid Grid.Column="5">
+                <TextBlock Text="{Binding Database.Collection.Count, StringFormat='Databases: {0}'}" VerticalAlignment="Center" FontSize="15"/>
+            </Grid>
+
+            <Grid Grid.Column="6">
+                <Button Style="{StaticResource RoundButton}">
+                    <Path Data="{StaticResource Collection}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="7">
                 <TextBlock Text="{Binding Database.Database.Series.Count, StringFormat='Series: {0}'}" VerticalAlignment="Center" FontSize="15"/>
             </Grid>
         </Grid>

@@ -16,6 +16,7 @@ namespace Makima.ViewModels
     {
         private string Root { get; set; }
         private string Extension { get; set; }
+        public List<DatabaseModel> Collection { get; set; }
         private CacheViewModel _cache;
         public CacheViewModel Cache
         {
@@ -45,6 +46,7 @@ namespace Makima.ViewModels
             {
                 Series = new ObservableCollection<SeriesModel>()
             };
+            Collection = new List<DatabaseModel>();
 
             Initialize();
             Load();
@@ -58,17 +60,69 @@ namespace Makima.ViewModels
             }
         }
 
+        public DatabaseModel Search(SeriesModel series)
+        {
+            foreach (DatabaseModel db in Collection)
+            {
+                if (db.Series.Contains(series) == true)
+                {
+                    return (db);
+                }
+            }
+
+            return (null);
+        }
+
         private void Load()
         {
             DatabaseModel data = null;
             string[] files = Directory.GetFiles(Root, $"*.{Extension}", SearchOption.AllDirectories);
 
-
             foreach (string file in files)
             {
                 data = JsonConvert.DeserializeObject<DatabaseModel>(File.ReadAllText(file));
+                Collection.Add(data);
                 AddSeriesToDatabase(data.Series);
             }
+        }
+
+        public SeriesModel Search(string name)
+        {
+            foreach (SeriesModel series in Database.Series)
+            {
+                if (series.Name == name) return series;
+            }
+            return (null);
+        }
+
+        public void Update(SeriesModel series)
+        {
+            DatabaseModel db = Search(series);
+            int index = 0;
+
+            if (db != null)
+            {
+                index = SearchIndex(db, series.Name);
+                if (index != -1)
+                {
+                    db.Series.RemoveAt(index);
+                    db.Series.Insert(index, series);
+            
+                    Save(db);
+                }
+            }
+        }
+
+        private int SearchIndex(DatabaseModel db, string name)
+        {
+            SeriesModel series = Search(name);
+
+            if (series != null)
+            {
+                return (db.Series.IndexOf(series));
+            }
+
+            return (-1);
         }
 
         public async void Add(string path)
@@ -79,17 +133,17 @@ namespace Makima.ViewModels
 
             if (Directory.Exists(path) == true)
             {
-                db = new Models.DatabaseModel()
+                db = new DatabaseModel()
                 {
                     Path = path,
                     ID = $"{path.GetHashCode()}",
-                    Series = new ObservableCollection<Models.SeriesModel>()
+                    Series = new ObservableCollection<SeriesModel>()
                 };
                 series = Directory.GetDirectories(path);
                 foreach (string folder in series)
                 {
                     series_model = await Series(folder, GetName(folder));
-                    if (db.Series.Contains(series_model) == false)
+                    if (Search(series_model.Name) == null)
                     {
                         db.Series.Add(series_model);
                     }
@@ -130,6 +184,13 @@ namespace Makima.ViewModels
         private SeasonModel Season(string path, string name)
         {
             string[] files = Directory.GetFiles(path);
+            string[] extensions =
+            {
+                "mp4",
+                "mov",
+                "avi",
+                "mkv"
+            };
             SeasonModel model = new SeasonModel()
             {
                 Name = name,
@@ -140,7 +201,11 @@ namespace Makima.ViewModels
 
             foreach (string file in files)
             {
-                model.Episodes.Add(Episode(GetName(file)));
+                foreach (string extension in extensions)
+                {
+                    if (file.EndsWith($".{extension}") == true)
+                        model.Episodes.Add(Episode(GetName(file)));
+                }
             }
 
             return (model);
@@ -190,15 +255,13 @@ namespace Makima.ViewModels
 
             if (count > 0)
             {
-                Console.WriteLine($"Left move: {Database.Series[0].ID}");
                 buffer = Database.Series[count - 1];
                 Database.Series.RemoveAt(count - 1);
                 Database.Series.Insert(0, buffer);
-                Console.WriteLine($"Left move: {Database.Series[0].ID}");
             }
         }
 
-        private void Save(Models.DatabaseModel db)
+        private void Save(DatabaseModel db)
         {
             string complete = $"{Root}/{db.ID}.{Extension}";
 
@@ -206,7 +269,7 @@ namespace Makima.ViewModels
             {
                 File.Delete(complete);
             }
-            File.WriteAllText(complete, Newtonsoft.Json.JsonConvert.SerializeObject(db));
+            File.WriteAllText(complete, JsonConvert.SerializeObject(db));
         }
 
         private void Remove()
