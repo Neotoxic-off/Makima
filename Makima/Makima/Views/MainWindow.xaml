@@ -139,16 +139,15 @@
                                                         <Grid>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="*"/>
-                                                                <RowDefinition Height="1"/>
                                                                 <RowDefinition Height="*"/>
                                                                 <RowDefinition Height="*"/>
+                                                                <RowDefinition Height="10"/>
                                                             </Grid.RowDefinitions>
                                                             <Grid Grid.Row="0" Margin="5">
                                                                 <Image Source="{Binding Splash}" Height="450"/>
                                                             </Grid>
-                                                            <Grid Grid.Row="1" Background="{StaticResource Panel}" Margin="10"/>
-                                                            <TextBlock Grid.Row="2" Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
-                                                            <TextBlock Grid.Row="3" Text="{Binding Seasons.Count, StringFormat='Seasons: {0}'}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
+                                                            <TextBlock Grid.Row="1" Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
+                                                            <TextBlock Grid.Row="2" Text="{Binding Seasons.Count, StringFormat='Seasons: {0}'}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
                                                         </Grid>
                                                     </Border>
                                                 </Button>
@@ -177,11 +176,38 @@
                             <ColumnDefinition Width="200"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="0" Content="Season:" Foreground="{StaticResource Normal}" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
-                        <ComboBox Grid.Column="1" Style="{StaticResource ComboBoxFlatStyle}" ItemsSource="{Binding SelectedSeries.Seasons}" SelectedItem="{Binding SelectedSeries.LatestSeason, Mode=TwoWay}" DisplayMemberPath="Name"/>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Content="Season:" Foreground="{StaticResource Normal}" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                        </Grid>
 
-                        <Label Grid.Column="3" Content="Episode:" Foreground="{StaticResource Normal}" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
-                        <ComboBox Grid.Column="4" Style="{StaticResource ComboBoxFlatStyle}" ItemsSource="{Binding SelectedSeries.LatestSeason.Episodes}" SelectedItem="{Binding SelectedSeries.LatestEpisode, Mode=TwoWay}" DisplayMemberPath="Name"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+ 
+                            </Grid.RowDefinitions>
+                            
+                            <ComboBox Grid.Row="0" IsEnabled="{Binding SeasonLock}" Style="{StaticResource ComboBoxFlatStyle}" ItemsSource="{Binding SelectedSeries.Seasons, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedSeries.LatestSeason, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, IsAsync=True}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
+                            
+                        </Grid>
+
+                        <Grid Grid.Column="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Column="3" Content="Episode:" Foreground="{StaticResource Normal}" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                        </Grid>
+
+                        <Grid Grid.Column="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <ComboBox Grid.Column="0" IsEnabled="{Binding EpisodeLock}" Style="{StaticResource ComboBoxFlatStyle}" ItemsSource="{Binding SelectedSeries.LatestSeason.Episodes, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedSeries.LatestEpisode, Mode=TwoWay}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
+
+                        </Grid>
 
                         <Grid Grid.Column="6">
                             <Button Style="{StaticResource FullButtonPink}" Command="{Binding WatchCommand}" Content="Watch"/>

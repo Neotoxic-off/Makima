@@ -11,12 +11,6 @@ namespace Makima.Models
 {
     public class SeriesModel: BaseModel
     {
-        private bool _selected;
-        public bool Selected
-        {
-            get { return _selected; }
-            set { SetProperty(ref _selected, value); }
-        }
         private SeasonModel _latest_season;
         public SeasonModel LatestSeason
         {
