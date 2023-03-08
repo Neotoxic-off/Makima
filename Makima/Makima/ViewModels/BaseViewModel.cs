@@ -11,6 +11,7 @@ namespace Makima.ViewModels
 {
     public class BaseViewModel: INotifyPropertyChanged
     {
+        public string RootFolder = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}/Makima";
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)

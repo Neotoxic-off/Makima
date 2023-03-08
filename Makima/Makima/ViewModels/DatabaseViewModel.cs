@@ -38,7 +38,7 @@ namespace Makima.ViewModels
 
         public DatabaseViewModel()
         {
-            Root = "Library";
+            Root = $"{RootFolder}/Library";
             Extension = "mlf";
             Cache = new CacheViewModel();
             Library = new ObservableCollection<SeriesModel>();
@@ -54,9 +54,18 @@ namespace Makima.ViewModels
 
         private void Initialize()
         {
-            if (Directory.Exists(Root) == false)
+            string[] directories =
             {
-                Directory.CreateDirectory(Root);
+                RootFolder,
+                Root
+            };
+
+            foreach (string dir in directories)
+            {
+                if (Directory.Exists(dir) == false)
+                {
+                    Directory.CreateDirectory(dir);
+                }
             }
         }
 
@@ -171,7 +180,7 @@ namespace Makima.ViewModels
                 ID = $"{name.GetHashCode()}",
                 Seasons = new ObservableCollection<SeasonModel>(),
                 SeasonsWatched = new ObservableCollection<SeasonModel>(),
-                Splash = new BitmapImage(await Cache.Search(name))
+                Splash = await Cache.Load(name)
             };
 
             foreach (string folder in folders)

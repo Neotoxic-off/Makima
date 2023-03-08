@@ -23,6 +23,8 @@
 
 ## Information
 - Development environment: Windows 11 v22H2 (x64)
+- All informations such as Cache & Libraries are stored here: `%AppData%\Roaming\Makima`
+- Patch notes: `PATCH-NOTES.md`
 
 ## Requirements
 - .NET *6.0*
@@ -41,16 +43,16 @@
 - [X] Files extensions filter: `["mp4", "mov", "avi", "mkv"]`
 - [X] Database format documentation
 - [X] Multi databases support
+- [X] Add patch-notes for each update
+- [X] Display databases count
+- [X] Set splash in cache
 
 ## Tasks
 - [ ] Graphical charter: `https://colorhunt.co/`
 - [ ] Single exe file (no dll): `https://learn.microsoft.com/en-us/dotnet/core/deploying/single-file/overview?tabs=cli`
 - [ ] Multilingual support: `https://www.codeproject.com/Articles/123460/Simplest-Way-to-Implement-Multilingual-WPF-Applica`
 - [ ] Tutorial
-- [ ] Add patch-notes for each update
-- [ ] Display databases count
 - [ ] Vidéo tutorial
-- [ ] Set splash in cache
 - [ ] UX & UI friendly
 - [ ] Update verification
 - [ ] Installer for application

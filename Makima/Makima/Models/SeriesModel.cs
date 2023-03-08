@@ -41,6 +41,7 @@ namespace Makima.Models
             get { return _name; }
             set { SetProperty(ref _name, value); }
         }
+
         private ImageSource _splash;
         public ImageSource Splash
         {
