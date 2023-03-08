@@ -1,3 +1,7 @@
+# 1.2.0.1
+- Change assembly build version
+- Change placeholder file uri location (to prevent format issues)
+
 # 1.2.0.0
 - Add cache system
 - Set splash in cache

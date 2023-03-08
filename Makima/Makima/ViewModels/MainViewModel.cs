@@ -98,13 +98,6 @@ namespace Makima.ViewModels
                 Database.Update(SelectedSeries);
                 Logger.Record("starting episode");
                 System.Diagnostics.Process.Start(path);
-            } else
-            {
-                Logger.Record("episode not found in collections");
-                foreach (DatabaseModel model in Database.Collection)
-                {
-                    Console.WriteLine(model.Series.Count());
-                }
             }
         }
 

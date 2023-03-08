@@ -70,7 +70,7 @@ namespace Makima.ViewModels
                 }
             }
 
-            return (new Uri("https://raw.githubusercontent.com/Neotoxic-off/Makima/main/Assets/Placeholder.png"));
+            return (new Uri("https://raw.githubusercontent.com/Neotoxic-off/Makima/main/Assets/Placeholder.jpg"));
         }
 
         public async Task<BitmapImage> Load(string name)
