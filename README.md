@@ -56,4 +56,5 @@
 - [ ] UX & UI friendly
 - [ ] Update verification
 - [ ] Installer for application
+- [ ] Libraries manager (remove, clear, purge, prepare)
 
