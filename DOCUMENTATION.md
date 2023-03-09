@@ -14,13 +14,15 @@
 |----------------|-------------------------------------|-----------------------|
 | ID             | `string`                            | "0000001"             |
 | Path           | `string`                            | "E:\\Series"          |
-| Seasons        | `ObservableCollection<SeriesModel>` |                       |
+| SelectedSeries | `SeriesModel`                       |                       |
+| Series         | `ObservableCollection<SeriesModel>` |                       |
 
 #### JSON Format
 ```JSON
 {
   "ID": null,
   "Name": null,
+  "SelectedSeries": null,
   "Series": []
 }
 ```
@@ -34,7 +36,8 @@
 | Name           | `string`                            | "Chainsawman"         |
 | Splash         | `ImageSource`                       | "https://t.com/i.jpg" |
 | Seasons        | `ObservableCollection<SeasonModel>` |                       |
-| SeasonsWatched | `ObservableCollection<SeasonModel>` |                       |
+| LatestSeason   | `string`                            |                       |
+| LatestEpisode  | `string`                            |                       |
 
 #### JSON Format
 ```JSON
@@ -43,7 +46,8 @@
   "Name": null,
   "Splash": null,
   "Seasons": [],
-  "SeasonsWatched": []
+  "LatestSeason": null,
+  "LatestEpisode": null
 }
 ```
 
@@ -54,15 +58,13 @@
 | ID              | `string`                             | "1000001"  |
 | Name            | `string`                             | "Season 1" |
 | Episodes        | `ObservableCollection<EpisodeModel>` |            |
-| EpisodesWatched | `ObservableCollection<EpisodeModel>` |            |
 
 #### JSON Format
 ```JSON
 {
   "ID": null,
   "Name": null,
-  "Episodes": [],
-  "EpisodesWatched": []
+  "Episodes": []
 }
 ```
 
@@ -71,7 +73,7 @@
 | Element         | Type                                 | Example    |
 |-----------------|--------------------------------------|------------|
 | ID              | `string`                             | "1100001"  |
-| Name            | `string`                             | "1.mkv" |
+| Name            | `string`                             | "1.mkv"    |
 
 #### JSON Format
 ```JSON

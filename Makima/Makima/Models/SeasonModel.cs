@@ -28,11 +28,5 @@ namespace Makima.Models
             get { return _episodes; }
             set { SetProperty(ref _episodes, value); }
         }
-        private ObservableCollection<EpisodeModel> _episodes_watched;
-        public ObservableCollection<EpisodeModel> EpisodesWatched
-        {
-            get { return _episodes_watched; }
-            set { SetProperty(ref _episodes_watched, value); }
-        }
     }
 }

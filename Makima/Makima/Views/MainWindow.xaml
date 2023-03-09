@@ -144,7 +144,7 @@
                                                                 <RowDefinition Height="10"/>
                                                             </Grid.RowDefinitions>
                                                             <Grid Grid.Row="0" Margin="5">
-                                                                <Image Source="{Binding Splash}" Height="450"/>
+                                                                <Image Source="{Binding Splash}" Height="450" Stretch="Uniform"/>
                                                             </Grid>
                                                             <TextBlock Grid.Row="1" Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
                                                             <TextBlock Grid.Row="2" Text="{Binding Seasons.Count, StringFormat='Seasons: {0}'}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
@@ -186,11 +186,9 @@
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
- 
                             </Grid.RowDefinitions>
-                            
-                            <ComboBox Grid.Row="0" IsEnabled="{Binding SeasonLock}" Style="{StaticResource ComboBoxFlatStyle}" ItemsSource="{Binding SelectedSeries.Seasons, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedSeries.LatestSeason, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, IsAsync=True}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
-                            
+
+                            <ComboBox Grid.Row="0" IsEnabled="{Binding SeasonLock}" Style="{StaticResource ComboBoxFlatStyle}" ItemsSource="{Binding SelectedSeries.Seasons, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Seasons, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
                         </Grid>
 
                         <Grid Grid.Column="3">
@@ -205,8 +203,7 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <ComboBox Grid.Column="0" IsEnabled="{Binding EpisodeLock}" Style="{StaticResource ComboBoxFlatStyle}" ItemsSource="{Binding SelectedSeries.LatestSeason.Episodes, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedSeries.LatestEpisode, Mode=TwoWay}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
-
+                            <ComboBox Grid.Column="0" IsEnabled="{Binding EpisodeLock}" Style="{StaticResource ComboBoxFlatStyle}" ItemsSource="{Binding Seasons.Episodes, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Episodes, Mode=TwoWay}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
                         </Grid>
 
                         <Grid Grid.Column="6">

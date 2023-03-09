@@ -11,14 +11,14 @@ namespace Makima.Models
 {
     public class SeriesModel: BaseModel
     {
-        private SeasonModel _latest_season;
-        public SeasonModel LatestSeason
+        private string _latest_season;
+        public string LatestSeason
         {
             get { return _latest_season; }
             set { SetProperty(ref _latest_season, value); }
         }
-        private EpisodeModel _latest_episode;
-        public EpisodeModel LatestEpisode
+        private string _latest_episode;
+        public string LatestEpisode
         {
             get { return _latest_episode; }
             set { SetProperty(ref _latest_episode, value); }
@@ -47,12 +47,6 @@ namespace Makima.Models
         {
             get { return _seasons; }
             set { SetProperty(ref _seasons, value); }
-        }
-        private ObservableCollection<SeasonModel> _seasons_watched;
-        public ObservableCollection<SeasonModel> SeasonsWatched
-        {
-            get { return _seasons_watched; }
-            set { SetProperty(ref _seasons_watched, value); }
         }
     }
 }

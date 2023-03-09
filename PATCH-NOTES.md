@@ -1,4 +1,13 @@
-# 1.2.0.1
+# 1.2.1.0
+- Fix preselected items not restored
+- Add guard rail to prevent no series selected
+- Add guard rail to prevent no season selected
+- Add guard rail to prevent no episode selected
+- Remove SeasonsWatched in SerieModel
+- Remove EpisodesWatched in SeasonModel
+- Improved performances due to database format size reduction
+- Improved loading speed
+- Improved closing speed
 - Change assembly build version
 - Change placeholder file uri location (to prevent format issues)
 

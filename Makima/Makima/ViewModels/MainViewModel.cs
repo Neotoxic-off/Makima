@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using Ookii.Dialogs.Wpf;
 using System.ComponentModel;
+using System.Windows.Controls;
+using System.Collections.ObjectModel;
 
 namespace Makima.ViewModels
 {
@@ -35,6 +37,21 @@ namespace Makima.ViewModels
             get { return _episode_lock; }
             set { SetProperty(ref _episode_lock, value); }
         }
+
+
+        private SeasonModel _seasons;
+        public SeasonModel Seasons
+        {
+            get { return _seasons; }
+            set { SetProperty(ref _seasons, value); }
+        }
+        private EpisodeModel _episodes;
+        public EpisodeModel Episodes
+        {
+            get { return _episodes; }
+            set { SetProperty(ref _episodes, value); }
+        }
+
         public SettingsViewModel Settings { get; set; }
         public LoggerViewModel Logger { get; set; }
         private VistaFolderBrowserDialog FolderSelector { get; set; }
@@ -105,9 +122,12 @@ namespace Makima.ViewModels
 
             if (db != null)
             {
+                SelectedSeries.LatestSeason = Seasons.Name;
+                SelectedSeries.LatestEpisode = Episodes.Name;
+
                 if (SelectedSeries.LatestSeason != null && SelectedSeries.LatestEpisode != null)
                 {
-                    path = $"{db.Path}/{SelectedSeries.Name}/{SelectedSeries.LatestSeason.Name}/{SelectedSeries.LatestEpisode.Name}";
+                    path = $"{db.Path}/{SelectedSeries.Name}/{SelectedSeries.LatestSeason}/{SelectedSeries.LatestEpisode}";
                     if (File.Exists(path) == true)
                     {
                         Logger.Record("updating series in database");
@@ -115,6 +135,42 @@ namespace Makima.ViewModels
                         Logger.Record("starting episode");
                         System.Diagnostics.Process.Start(path);
                         Logger.Record("episode started");
+                    }
+                }
+            }
+        }
+
+        private void SetLatestInformation()
+        {
+            SetLatestSeason();
+            SetLatestEpisode();
+        }
+
+        private void SetLatestSeason()
+        {
+            if (SelectedSeries.Seasons != null)
+            {
+                foreach (SeasonModel season in SelectedSeries.Seasons)
+                {
+                    if (season.Name == SelectedSeries.LatestSeason)
+                    {
+                        Seasons = season;
+                        return;
+                    }
+                }
+            }
+        }
+
+        private void SetLatestEpisode()
+        {
+            if (Seasons != null)
+            {
+                foreach (EpisodeModel episode in Seasons.Episodes)
+                {
+                    if (episode.Name == SelectedSeries.LatestEpisode)
+                    {
+                        Episodes = episode;
+                        return;
                     }
                 }
             }
@@ -129,6 +185,7 @@ namespace Makima.ViewModels
 
             if (SelectedSeries != null)
             {
+                SetLatestInformation();
                 Logger.Record($"series {data} loaded");
                 SeasonLock = true;
                 EpisodeLock = true;

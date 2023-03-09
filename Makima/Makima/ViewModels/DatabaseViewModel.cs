@@ -179,7 +179,6 @@ namespace Makima.ViewModels
                 Name = name,
                 ID = $"{name.GetHashCode()}",
                 Seasons = new ObservableCollection<SeasonModel>(),
-                SeasonsWatched = new ObservableCollection<SeasonModel>(),
                 Splash = await Cache.Load(name)
             };
 
@@ -205,8 +204,7 @@ namespace Makima.ViewModels
             {
                 Name = name,
                 ID = $"{name.GetHashCode()}",
-                Episodes = new ObservableCollection<EpisodeModel>(),
-                EpisodesWatched = new ObservableCollection<EpisodeModel>()
+                Episodes = new ObservableCollection<EpisodeModel>()
             };
 
             foreach (string file in files)
