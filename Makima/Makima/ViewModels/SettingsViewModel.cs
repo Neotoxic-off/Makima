@@ -16,13 +16,6 @@ namespace Makima.ViewModels
             set { SetProperty(ref _version, value); }
         }
 
-        private string _root = "Downloads";
-        public string Root
-        {
-            get { return _root; }
-            set { SetProperty(ref _root, value); }
-        }
-
         private string _profile = "https://avatars.githubusercontent.com/u/44700383?v=4";
         public string Profile
         {

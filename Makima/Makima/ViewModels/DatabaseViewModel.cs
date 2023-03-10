@@ -16,7 +16,12 @@ namespace Makima.ViewModels
     {
         private string Root { get; set; }
         private string Extension { get; set; }
-        public List<DatabaseModel> Collection { get; set; }
+        private List<DatabaseModel> _collection;
+        public List<DatabaseModel> Collection
+        {
+            get { return _collection; }
+            set { SetProperty(ref _collection, value); }
+        }
         private CacheViewModel _cache;
         public CacheViewModel Cache
         {

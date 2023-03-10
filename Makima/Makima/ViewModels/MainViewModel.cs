@@ -14,6 +14,7 @@ using Ookii.Dialogs.Wpf;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
+using Makima.Views;
 
 namespace Makima.ViewModels
 {
@@ -67,6 +68,9 @@ namespace Makima.ViewModels
         public DelegateCommand CodeCommand { get; set; }
         public DelegateCommand GetSelectedCommand { get; set; }
         public DelegateCommand WatchCommand { get; set; }
+        public DelegateCommand SettingsCommand { get; set; }
+
+        private Views.SettingsWindow SettingsWindow { get; set; }
 
         public MainViewModel()
         {
@@ -94,6 +98,8 @@ namespace Makima.ViewModels
             Settings = new SettingsViewModel();
             Database = new DatabaseViewModel();
 
+            SettingsWindow = new SettingsWindow();
+
             Logger.Record("models loaded");
         }
 
@@ -112,7 +118,14 @@ namespace Makima.ViewModels
             GetSelectedCommand = new DelegateCommand(GetSelected);
             WatchCommand = new DelegateCommand(Watch);
 
+            SettingsCommand = new DelegateCommand(SettingsManager);
+
             Logger.Record("commands loaded");
+        }
+
+        private void SettingsManager(object data)
+        {
+            SettingsWindow.ShowDialog();
         }
 
         private void Watch(object data)
