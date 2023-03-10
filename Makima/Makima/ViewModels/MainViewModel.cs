@@ -68,9 +68,9 @@ namespace Makima.ViewModels
         public DelegateCommand CodeCommand { get; set; }
         public DelegateCommand GetSelectedCommand { get; set; }
         public DelegateCommand WatchCommand { get; set; }
-        public DelegateCommand SettingsCommand { get; set; }
+        public DelegateCommand ConfigurationCommand { get; set; }
 
-        private Views.SettingsWindow SettingsWindow { get; set; }
+        private Views.ConfigurationWindow ConfigurationWindow { get; set; }
 
         public MainViewModel()
         {
@@ -98,7 +98,7 @@ namespace Makima.ViewModels
             Settings = new SettingsViewModel();
             Database = new DatabaseViewModel();
 
-            SettingsWindow = new SettingsWindow();
+            ConfigurationWindow = new ConfigurationWindow();
 
             Logger.Record("models loaded");
         }
@@ -118,14 +118,14 @@ namespace Makima.ViewModels
             GetSelectedCommand = new DelegateCommand(GetSelected);
             WatchCommand = new DelegateCommand(Watch);
 
-            SettingsCommand = new DelegateCommand(SettingsManager);
+            ConfigurationCommand = new DelegateCommand(Configuration);
 
             Logger.Record("commands loaded");
         }
 
-        private void SettingsManager(object data)
+        private void Configuration(object data)
         {
-            SettingsWindow.ShowDialog();
+            ConfigurationWindow.ShowDialog();
         }
 
         private void Watch(object data)

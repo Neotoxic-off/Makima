@@ -43,7 +43,7 @@
             </Grid>
 
             <Grid Grid.Column="2">
-                <Button Style="{StaticResource RoundButton}" Command="{Binding SettingsCommand}">
+                <Button Style="{StaticResource RoundButton}" Command="{Binding ConfigurationCommand}">
                     <Path Data="{StaticResource Settings}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
                 </Button>
             </Grid>

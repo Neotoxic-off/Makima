@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Makima.Views
 {
     /// <summary>
-    /// Logique d'interaction pour Settings.xaml
+    /// Logique d'interaction pour ConfigurationWindow.xaml
     /// </summary>
-    public partial class SettingsWindow : Window
+    public partial class ConfigurationWindow : Window
     {
-        public SettingsWindow()
+        public ConfigurationWindow()
         {
             InitializeComponent();
         }
