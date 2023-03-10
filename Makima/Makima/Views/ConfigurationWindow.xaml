@@ -10,10 +10,10 @@
       WindowStartupLocation="CenterScreen"
       Background="{StaticResource Background}"
       Foreground="{StaticResource Normal}"
-      Height="450"
-      Width="800"
+      Height="800"
+      Width="600"
       ResizeMode="NoResize"
-      Title="Settings">
+      Title="Configuration">
 
     <Window.DataContext>
         <ViewModels:ConfigurationViewModel/>
@@ -28,37 +28,12 @@
 
         <Grid Grid.Row="0" Background="{StaticResource Borders}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
-                <Label Content="Settings" Foreground="{StaticResource Normal}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
-            </Grid>
-
-            <Grid Grid.Column="2">
-                
-            </Grid>
-
-            <Grid Grid.Column="3">
-
-            </Grid>
-
-            <Grid Grid.Column="4">
-                
-            </Grid>
-
-            <Grid Grid.Column="5">
-                
-            </Grid>
-
-            <Grid Grid.Column="6">
-                
+                <Label Content="Configuration" Foreground="{StaticResource Normal}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" FontSize="20"/>
             </Grid>
         </Grid>
 

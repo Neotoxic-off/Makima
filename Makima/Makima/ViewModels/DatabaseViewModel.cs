@@ -16,8 +16,8 @@ namespace Makima.ViewModels
     {
         private string Root { get; set; }
         private string Extension { get; set; }
-        private List<DatabaseModel> _collection;
-        public List<DatabaseModel> Collection
+        private ObservableCollection<DatabaseModel> _collection;
+        public ObservableCollection<DatabaseModel> Collection
         {
             get { return _collection; }
             set { SetProperty(ref _collection, value); }
@@ -51,7 +51,7 @@ namespace Makima.ViewModels
             {
                 Series = new ObservableCollection<SeriesModel>()
             };
-            Collection = new List<DatabaseModel>();
+            Collection = new ObservableCollection<DatabaseModel>();
 
             Initialize();
             Load();

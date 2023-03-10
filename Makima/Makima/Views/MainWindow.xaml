@@ -39,7 +39,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
-                <Label Content="Makima" Foreground="{StaticResource Normal}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+                <Label Content="Makima" Foreground="{StaticResource Normal}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" FontSize="20"/>
             </Grid>
 
             <Grid Grid.Column="2">
