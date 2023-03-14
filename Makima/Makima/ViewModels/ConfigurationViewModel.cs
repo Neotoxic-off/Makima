@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Makima.ViewModels
 {
-    public class SettingsViewModel: BaseViewModel
+    public class ConfigurationViewModel : BaseViewModel
     {
         private string _version;
         public string Version

@@ -1,3 +1,6 @@
+# 1.3.0.0
+- Fix database number not updating on library add
+
 # 1.2.1.0
 - Fix preselected items not restored
 - Add guard rail to prevent no series selected

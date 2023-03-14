@@ -34,25 +34,37 @@
                 <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
-                <Label Content="Makima" Foreground="{StaticResource Normal}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"/>
+                <Label Content="Makima" Foreground="{StaticResource Normal}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0" FontSize="20"/>
             </Grid>
 
             <Grid Grid.Column="2">
+                <Button Style="{StaticResource RoundButton}" Command="{Binding ConfigurationCommand}">
+                    <Path Data="{StaticResource Settings}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="3">
+                
+            </Grid>
+
+            <Grid Grid.Column="4">
                 <Button Style="{StaticResource RoundButton}" Command="{Binding DiscordCommand}">
                     <Path Data="{StaticResource Discord}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
                 </Button>
             </Grid>
 
-            <Grid Grid.Column="3">
+            <Grid Grid.Column="5">
                 <Button Style="{StaticResource RoundButton}" Command="{Binding GithubCommand}">
                     <Path Data="{StaticResource Github}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
                 </Button>
             </Grid>
 
-            <Grid Grid.Column="4">
+            <Grid Grid.Column="6">
                 <Button Style="{StaticResource RoundButton}" Command="{Binding CodeCommand}">
                     <Path Data="{StaticResource Code}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
                 </Button>
