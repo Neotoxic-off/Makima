@@ -16,7 +16,12 @@ namespace Makima.ViewModels
     {
         private string Root { get; set; }
         private string Extension { get; set; }
-        public List<DatabaseModel> Collection { get; set; }
+        private ObservableCollection<DatabaseModel> _collection;
+        public ObservableCollection<DatabaseModel> Collection
+        {
+            get { return _collection; }
+            set { SetProperty(ref _collection, value); }
+        }
         private CacheViewModel _cache;
         public CacheViewModel Cache
         {
@@ -46,7 +51,7 @@ namespace Makima.ViewModels
             {
                 Series = new ObservableCollection<SeriesModel>()
             };
-            Collection = new List<DatabaseModel>();
+            Collection = new ObservableCollection<DatabaseModel>();
 
             Initialize();
             Load();
@@ -152,23 +157,50 @@ namespace Makima.ViewModels
                 foreach (string folder in series)
                 {
                     series_model = await Series(folder, GetName(folder));
-                    if (Search(series_model.Name) == null)
-                    {
-                        db.Series.Add(series_model);
-                    }
+                    db.Series.Add(series_model);
                 }
-                Collection.Add(db);
-                Save(db);
                 AddSeriesToDatabase(db.Series);
+                if (UpdateCollection(db) == false)
+                {
+                    Collection.Add(db);
+                }
+                Save(db);
             }
+        }
+
+        private bool UpdateCollection(DatabaseModel db)
+        {
+            for (int i = 0; i < Collection.Count(); i++)
+            {
+                if (db.ID == Collection[i].ID)
+                {
+                    Collection[i] = db;
+                    return (true);
+                }
+            }
+
+            return (false);
         }
 
         private void AddSeriesToDatabase(ObservableCollection<SeriesModel> series)
         {
             foreach (SeriesModel seriesModel in series)
             {
-                Database.Series.Add(seriesModel);
+                if (SeriesExists(seriesModel) == false)
+                    Database.Series.Add(seriesModel);
             }
+        }
+
+        private bool SeriesExists(SeriesModel series)
+        {
+            foreach (SeriesModel current in Database.Series)
+            {
+                if (current.ID == series.ID)
+                {
+                    return (true);
+                }
+            }
+            return (false);
         }
 
         private async Task<SeriesModel> Series(string path, string name)

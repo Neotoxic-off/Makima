@@ -26,6 +26,12 @@
 - All informations such as Cache & Libraries are stored here: `%AppData%\Roaming\Makima`
 - Patch notes: `PATCH-NOTES.md`
 
+<p align = "center">
+  <a>
+    <img src="https://raw.githubusercontent.com/Neotoxic-off/Makima/main/Assets/example.png" height="25%" width="25%"/>
+  </a>
+</p>
+
 ## Requirements
 - .NET *6.0*
 
@@ -56,5 +62,4 @@
 - [ ] UX & UI friendly
 - [ ] Update verification
 - [ ] Installer for application
-- [ ] Libraries manager (remove, clear, purge, prepare)
 
