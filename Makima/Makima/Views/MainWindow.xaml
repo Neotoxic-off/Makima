@@ -27,7 +27,7 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="{StaticResource Borders}">
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="*"/>
@@ -91,7 +91,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <Button Style="{StaticResource RoundButton}" Height="65" Width="65" BorderBrush="{StaticResource Normal}" BorderThickness="1">
+                            <Button Style="{StaticResource RoundButton}" Height="65" Width="65">
                                 <Ellipse Height="60" Width="60" StrokeThickness="1" Stroke="{StaticResource Normal}">
                                     <Ellipse.Fill>
                                         <ImageBrush ImageSource="{Binding Settings.Profile}" Stretch="UniformToFill"/>
@@ -115,63 +115,63 @@
 
                     <Grid Grid.Row="1" Background="{StaticResource Panel}"/>
 
-                    <Grid Grid.Row="2" VerticalAlignment="Center" Margin="10">
+                    <Grid Grid.Row="2" VerticalAlignment="Center" Margin="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="50"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Button Width="40" Height="40" Grid.Column="0" Style="{StaticResource RoundButton}" Command="{Binding LeftArrowCommand}">
-                                <Path Data="{StaticResource ArrowLeft}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
-                            </Button>
-
-                            <StackPanel Grid.Column="1">
-                                <ItemsControl x:Name="Series" ItemsSource="{Binding Database.Database.Series}">
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel Orientation="Horizontal"/>
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Border Margin="10" Background="Transparent" Width="300">
-                                                <Border.Style>
-                                                    <Style TargetType="Border">
-                                                        <Setter Property="BorderThickness" Value="1"/>
-                                                    </Style>
-                                                </Border.Style>
-                                                <Button Style="{StaticResource InvisibleButton}" Command="{Binding ElementName=Series, Path=DataContext.GetSelectedCommand}" CommandParameter="{Binding Name}">
-                                                    <Border BorderBrush="{StaticResource Panel}" CornerRadius="5" BorderThickness="1">
-                                                        <Grid>
-                                                            <Grid.RowDefinitions>
-                                                                <RowDefinition Height="*"/>
-                                                                <RowDefinition Height="*"/>
-                                                                <RowDefinition Height="*"/>
-                                                                <RowDefinition Height="10"/>
-                                                            </Grid.RowDefinitions>
-                                                            <Grid Grid.Row="0" Margin="5">
-                                                                <Image Source="{Binding Splash}" Height="450" Stretch="Uniform"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <StackPanel>
+                                    <ItemsControl x:Name="Series" ItemsSource="{Binding Database.Database.Series}"  SizeChanged="ItemsControl_SizeChanged">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <UniformGrid Columns="3"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Background="Transparent" Width="315" Margin="5">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="BorderThickness" Value="1"/>
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <Button Style="{StaticResource ItemButton}" Command="{Binding ElementName=Series, Path=DataContext.GetSelectedCommand}" CommandParameter="{Binding Name}">
+                                                        <Border BorderBrush="{StaticResource Panel}" CornerRadius="5" BorderThickness="1" Width="315">
+                                                            <Grid>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="2*"/>
+                                                                    <RowDefinition Height="*"/>
+                                                                </Grid.RowDefinitions>
+                                                                <Grid Grid.Row="0">
+                                                                    <Image Source="{Binding Splash}" Height="200" Stretch="UniformToFill"/>
+                                                                </Grid>
+                                                                <Grid Grid.Row="1">
+                                                                    <Grid.Background>
+                                                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                                            <GradientStop Color="{StaticResource ColorPanel}" Offset="0.0" />
+                                                                            <GradientStop Color="{StaticResource ColorPanel}" Offset="0.5" />
+                                                                            <GradientStop Color="{StaticResource ColorPanel}" Offset="0.7" />
+                                                                            <GradientStop Color="Transparent" Offset="1.1" />
+                                                                        </LinearGradientBrush>
+                                                                    </Grid.Background>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*"/>
+                                                                        <RowDefinition Height="*"/>
+                                                                    </Grid.RowDefinitions>
+                                                                    <TextBlock Margin="0,5,0,0" Grid.Row="0" Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
+                                                                    <TextBlock Grid.Row="1" Text="{Binding Seasons.Count, StringFormat='Seasons: {0}'}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
+                                                                </Grid>
                                                             </Grid>
-                                                            <TextBlock Grid.Row="1" Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
-                                                            <TextBlock Grid.Row="2" Text="{Binding Seasons.Count, StringFormat='Seasons: {0}'}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
-                                                        </Grid>
-                                                    </Border>
-                                                </Button>
-                                            </Border>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </StackPanel>
-
-                            <Button Width="40" Height="40" Grid.Column="2" Style="{StaticResource RoundButton}" Command="{Binding RightArrowCommand}">
-                                <Path Data="{StaticResource ArrowRight}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
-                            </Button>
+                                                        </Border>
+                                                    </Button>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </ScrollViewer>
                         </Grid>
                     </Grid>
 
@@ -226,7 +226,7 @@
             </Border>
         </Grid>
         
-        <Grid Grid.Row="2" Background="{StaticResource Borders}">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>

@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <FontFamily x:Key="Dosis" >/Fonts/#Dosis</FontFamily>
+    <FontFamily x:Key="Squared" >/Fonts/#Squared Display</FontFamily>
+    <FontFamily x:Key="Higher" >/Fonts/#Higher</FontFamily>
+    <FontFamily x:Key="Orbit" >/Fonts/#Orbit-B BT</FontFamily>
+    <FontFamily x:Key="Comfortaa" >/Fonts/#Comfortaa Regular</FontFamily>
+    <FontFamily x:Key="Garet" >/Fonts/#Garet Book</FontFamily>
+    <FontFamily x:Key="Akkordeon" >/Fonts/#Akkordeon Eleven</FontFamily>
+</ResourceDictionary>

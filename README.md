@@ -28,7 +28,7 @@
 
 <p align = "center">
   <a>
-    <img src="https://raw.githubusercontent.com/Neotoxic-off/Makima/main/Assets/example.png" height="25%" width="25%"/>
+    <img src="https://raw.githubusercontent.com/Neotoxic-off/Makima/main/Assets/example.png" height="50%" width="50%"/>
   </a>
 </p>
 
