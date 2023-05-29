@@ -1,3 +1,7 @@
+# 2.0.0.0
+- Visual display update
+- Clear project
+
 # 1.3.1.0
 - Fix type mistake
 - Fix update series
