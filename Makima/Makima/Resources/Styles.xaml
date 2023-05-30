@@ -116,7 +116,7 @@
                 </Setter>
             </Trigger>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Foreground" Value="{StaticResource Green}"/>
+                <Setter Property="Foreground" Value="{StaticResource Pink}"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
