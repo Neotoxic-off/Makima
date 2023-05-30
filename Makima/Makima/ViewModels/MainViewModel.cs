@@ -57,11 +57,9 @@ namespace Makima.ViewModels
         private VistaFolderBrowserDialog FolderSelector { get; set; }
 
         public DatabaseViewModel Database { get; set; }
+        public NyaaViewModel Nyaa { get; set; }
 
         public DelegateCommand AddLibraryCommand { get; set; }
-        public DelegateCommand RightArrowCommand { get; set; }
-        public DelegateCommand LeftArrowCommand { get; set; }
-        public DelegateCommand SendCommand { get; set; }
         public DelegateCommand GithubCommand { get; set; }
         public DelegateCommand DiscordCommand { get; set; }
         public DelegateCommand CodeCommand { get; set; }
@@ -94,6 +92,9 @@ namespace Makima.ViewModels
 
             Settings = new SettingsViewModel();
             Database = new DatabaseViewModel();
+            Nyaa = new NyaaViewModel();
+
+            Nyaa.New();
 
             Logger.Record("models loaded");
         }
@@ -103,8 +104,6 @@ namespace Makima.ViewModels
             Logger.Record("loading commands");
 
             AddLibraryCommand = new DelegateCommand(AddLibrary);
-            RightArrowCommand = new DelegateCommand(RightArrow);
-            LeftArrowCommand = new DelegateCommand(LeftArrow);
 
             GithubCommand = new DelegateCommand(Github);
             DiscordCommand = new DelegateCommand(Discord);

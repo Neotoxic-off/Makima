@@ -230,6 +230,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\NyaaModel.cs" />
     <Compile Include="ViewModels\ConfigurationViewModel.cs" />
     <Page Include="Resources\Colors.xaml">
       <SubType>Designer</SubType>
@@ -266,6 +267,7 @@
     <Compile Include="ViewModels\DatabaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\LoggerViewModel.cs" />
+    <Compile Include="ViewModels\NyaaViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
