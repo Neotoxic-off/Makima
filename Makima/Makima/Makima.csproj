@@ -240,6 +240,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\FileModel.cs" />
+    <Compile Include="Models\FilterModel.cs" />
     <Compile Include="Models\FolderModel.cs" />
     <Compile Include="Models\NyaaModel.cs" />
     <Compile Include="Models\SettingsModel.cs" />

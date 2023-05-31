@@ -268,10 +268,5 @@ namespace Makima.ViewModels
 
             File.WriteAllText(complete, JsonConvert.SerializeObject(db));
         }
-
-        private void Remove()
-        {
-
-        }
     }
 }

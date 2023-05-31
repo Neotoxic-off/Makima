@@ -32,7 +32,7 @@ namespace Makima.ViewModels
 
         public NyaaViewModel()
         {
-            Domain = "https://nyaa.si/?page=rss&f=0&c=1_0";
+            Domain = "https://nyaa.si/?page=rss&f=0";
             Client = new HttpClient();
             Catalog = new XmlDocument();
             Nyaa = new ObservableCollection<NyaaModel>();
@@ -100,9 +100,9 @@ namespace Makima.ViewModels
             File.WriteAllBytes($"{SettingsModel.TorrentFolder.Path}\\{Path.GetFileName(Url)}", await response.Content.ReadAsByteArrayAsync());
         }
 
-        public async void Search(string Series)
+        public async void Search(FilterModel filter, string Series)
         {
-            await Download($"{Domain}&q={Format(Series)}");
+            await Download($"{Domain}&q={Format(Series)}&c={filter.Value}");
 
             Prepare();
         }
