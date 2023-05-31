@@ -116,7 +116,7 @@
                 </Setter>
             </Trigger>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Foreground" Value="{StaticResource Green}"/>
+                <Setter Property="Foreground" Value="{StaticResource Pink}"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
@@ -136,7 +136,7 @@
         <Setter Property="FontFamily" Value="Fonts/#Dosis"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Margin" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -148,22 +148,11 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="5" Background="{StaticResource PanelHover}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Trigger>
-            <Trigger Property="IsFocused" Value="True">
                 <Setter Property="Foreground" Value="{StaticResource Pink}"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="5" Background="{StaticResource PanelHover}">
+                            <Border CornerRadius="5" Background="Transparent">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>

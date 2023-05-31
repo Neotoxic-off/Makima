@@ -18,7 +18,7 @@ namespace Makima.ViewModels
         private HttpClient Client { get; set; }
         public CacheViewModel()
         {
-            Root = $"{RootFolder}/Cache";
+            Root = Models.SettingsModel.CacheFolder.Path;
             Client = new HttpClient();
 
             Initialize();
