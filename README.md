@@ -26,11 +26,11 @@
 - All informations such as Cache & Libraries are stored here: `%AppData%\Roaming\Makima`
 - Patch notes: `PATCH-NOTES.md`
 
-<p align = "center">
-  <a>
-    <img src="https://raw.githubusercontent.com/Neotoxic-off/Makima/main/Assets/example.png" height="50%" width="50%"/>
-  </a>
-</p>
+| | |
+|:-------------------------:|:-------------------------:|
+|<img src="https://raw.githubusercontent.com/Neotoxic-off/Makima/main/Assets/1.PNG"/>|<img src="https://raw.githubusercontent.com/Neotoxic-off/Makima/main/Assets/2.PNG"/>|
+|<img src="https://raw.githubusercontent.com/Neotoxic-off/Makima/main/Assets/3.PNG"/>|<img src="https://raw.githubusercontent.com/Neotoxic-off/Makima/main/Assets/4.PNG"/>|
+
 
 ## Requirements
 - .NET *6.0*
