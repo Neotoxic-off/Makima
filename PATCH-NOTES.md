@@ -1,3 +1,10 @@
+# 2.1.0.0
+- Visual update
+- Add library managment
+- Add navigation menu
+- Add torrent search
+- Add torrent download
+
 # 2.0.0.0
 - Visual display update
 - Clear project
