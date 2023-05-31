@@ -2,10 +2,10 @@
   <a>
     <img src="https://raw.githubusercontent.com/Neotoxic-off/Makima/main/Assets/Logo.png" height="25%" width="25%"/>
     <div align = "center">
-        <i>Makima is an illegal series manager</i>
+        <i>Makima is an illegal anime manager</i>
     </div>
     <div align = "center">
-        <i>Watch with easiness your downloaded series & anime</i>
+        <i>Watch & download with easiness your anime</i>
     </div>
   </a>
 </p>
