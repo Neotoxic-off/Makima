@@ -7,6 +7,9 @@ using System.Net.Http;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
 using System.Xml;
 using System.Xml.Linq;
 using Makima.Models;
@@ -37,6 +40,9 @@ namespace Makima.ViewModels
 
         private void Prepare()
         {
+            NyaaModel Model = null;
+            BrushConverter converter = new BrushConverter();
+
             if (Nyaa.Count > 0)
             {
                 Nyaa.Clear();
@@ -46,8 +52,7 @@ namespace Makima.ViewModels
             {
                 NamespaceManager = new XmlNamespaceManager(xmlNode.OwnerDocument.NameTable);
                 NamespaceManager.AddNamespace("nyaa", "https://nyaa.si/xmlns/nyaa");
-
-                Nyaa.Add(new NyaaModel()
+                Model = new NyaaModel()
                 {
                     Title = xmlNode.SelectSingleNode("title", NamespaceManager).InnerText,
                     Link = xmlNode.SelectSingleNode("link", NamespaceManager).InnerText,
@@ -56,8 +61,21 @@ namespace Makima.ViewModels
                     Seeders = (xmlNode.SelectSingleNode("nyaa:seeders", NamespaceManager) != null ? Int16.Parse(xmlNode.SelectSingleNode("nyaa:seeders", NamespaceManager).InnerText) : -1),
                     Leechers = (xmlNode.SelectSingleNode("nyaa:leechers", NamespaceManager) != null ? Int16.Parse(xmlNode.SelectSingleNode("nyaa:leechers", NamespaceManager).InnerText) : -1),
                     Downloads = (xmlNode.SelectSingleNode("nyaa:downloads", NamespaceManager) != null ? Int16.Parse(xmlNode.SelectSingleNode("nyaa:downloads", NamespaceManager).InnerText) : -1),
-                    Size = (xmlNode.SelectSingleNode("nyaa:size", NamespaceManager) != null ? xmlNode.SelectSingleNode("nyaa:size", NamespaceManager).InnerText : null)
-                });
+                    Size = (xmlNode.SelectSingleNode("nyaa:size", NamespaceManager) != null ? xmlNode.SelectSingleNode("nyaa:size", NamespaceManager).InnerText : null),
+                };
+
+                Model.StatusSeeders = (
+                    Model.Seeders > 0 ?
+                    (Brush)converter.ConvertFrom(Application.Current.Resources["Green"].ToString()) :
+                    (Brush)converter.ConvertFrom(Application.Current.Resources["Red"].ToString())
+                );
+                Model.StatusLeechers = (
+                    Model.Leechers > 0 ?
+                    (Brush)converter.ConvertFrom(Application.Current.Resources["Green"].ToString()) :
+                    (Brush)converter.ConvertFrom(Application.Current.Resources["Red"].ToString())
+                );
+                
+                Nyaa.Add(Model);
             }
         }
 

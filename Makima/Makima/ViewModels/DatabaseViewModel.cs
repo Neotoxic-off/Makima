@@ -14,7 +14,6 @@ namespace Makima.ViewModels
 {
     public class DatabaseViewModel: BaseViewModel
     {
-        private string Root { get; set; }
         private string Extension { get; set; }
         private ObservableCollection<DatabaseModel> _collection;
         public ObservableCollection<DatabaseModel> Collection
@@ -43,7 +42,6 @@ namespace Makima.ViewModels
 
         public DatabaseViewModel()
         {
-            Root = $"{RootFolder}/Library";
             Extension = "mlf";
             Cache = new CacheViewModel();
             Library = new ObservableCollection<SeriesModel>();
@@ -53,25 +51,7 @@ namespace Makima.ViewModels
             };
             Collection = new ObservableCollection<DatabaseModel>();
 
-            Initialize();
             Load();
-        }
-
-        private void Initialize()
-        {
-            string[] directories =
-            {
-                RootFolder,
-                Root
-            };
-
-            foreach (string dir in directories)
-            {
-                if (Directory.Exists(dir) == false)
-                {
-                    Directory.CreateDirectory(dir);
-                }
-            }
         }
 
         public DatabaseModel Search(SeriesModel series)
@@ -90,7 +70,7 @@ namespace Makima.ViewModels
         private void Load()
         {
             DatabaseModel data = null;
-            string[] files = Directory.GetFiles(Root, $"*.{Extension}", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(SettingsModel.Root.Path, $"*.{Extension}", SearchOption.AllDirectories);
 
             foreach (string file in files)
             {
@@ -277,40 +257,15 @@ namespace Makima.ViewModels
             return (null);
         }
 
-        public void MoveRight()
-        {
-            SeriesModel buffer = null;
-            int count = Database.Series.Count();
-
-            if (count > 0)
-            {
-                buffer = Database.Series[0];
-                Database.Series.RemoveAt(0);
-                Database.Series.Add(buffer);
-            }
-        }
-
-        public void MoveLeft()
-        {
-            SeriesModel buffer = null;
-            int count = Database.Series.Count();
-
-            if (count > 0)
-            {
-                buffer = Database.Series[count - 1];
-                Database.Series.RemoveAt(count - 1);
-                Database.Series.Insert(0, buffer);
-            }
-        }
-
         private void Save(DatabaseModel db)
         {
-            string complete = $"{Root}/{db.ID}.{Extension}";
+            string complete = $"{SettingsModel.AnimeFolder.Path}/{db.ID}.{Extension}";
 
             if (File.Exists(complete) == true)
             {
                 File.Delete(complete);
             }
+
             File.WriteAllText(complete, JsonConvert.SerializeObject(db));
         }
 

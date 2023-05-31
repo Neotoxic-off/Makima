@@ -26,40 +26,26 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
 
+            <Grid Grid.Column="0">
+                <Separator Height="5" Background="{StaticResource Normal}"/>
+            </Grid>
+
             <Grid Grid.Column="1">
-                <Button Style="{StaticResource RoundButton}">
-                    <Path Data="{StaticResource Collection}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
-                </Button>
+                <TextBlock Text="{Binding Database.Database.Series.Count, StringFormat='Series: {0}'}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
 
             <Grid Grid.Column="2">
-                <TextBlock Text="{Binding Database.Database.Series.Count, StringFormat='Series: {0}'}" VerticalAlignment="Center"/>
-            </Grid>
-
-            <Grid Grid.Column="3">
-                <Button Style="{StaticResource RoundButton}">
-                    <Path Data="{StaticResource Database}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
-                </Button>
-            </Grid>
-
-            <Grid Grid.Column="4">
-                <TextBlock Text="{Binding Database.Collection.Count, StringFormat='Databases: {0}'}" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Database.Collection.Count, StringFormat='Databases: {0}'}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
         </Grid>
 
         <Grid Grid.Row="1">
             <Border Margin="20">
-                <Grid VerticalAlignment="Center" Margin="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+                <Grid>
                     <Grid Grid.Column="0">
                         <ScrollViewer VerticalScrollBarVisibility="Hidden">
                             <StackPanel>
@@ -92,8 +78,7 @@
                                                                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                                                         <GradientStop Color="{StaticResource ColorPanel}" Offset="0.0" />
                                                                         <GradientStop Color="{StaticResource ColorPanel}" Offset="0.5" />
-                                                                        <GradientStop Color="{StaticResource ColorPanel}" Offset="0.7" />
-                                                                        <GradientStop Color="Transparent" Offset="1.1" />
+                                                                        <GradientStop Color="{StaticResource ColorPink}" Offset="1.1" />
                                                                     </LinearGradientBrush>
                                                                 </Grid.Background>
                                                                 <Grid.RowDefinitions>

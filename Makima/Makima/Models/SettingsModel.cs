@@ -21,11 +21,11 @@ namespace Makima.Models
             true
         );
         public static FolderModel TorrentFolder = new FolderModel(
-            $"{Root.Path}\\Torrent",
+            $"Torrents",
             true
         );
         public static FolderModel LogFolder = new FolderModel(
-            "Logs",
+            $"{Root.Path}\\Logs",
             true
         );
     }

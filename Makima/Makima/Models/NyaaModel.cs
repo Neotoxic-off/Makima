@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Xml.Serialization;
 
 namespace Makima.Models
@@ -20,9 +21,8 @@ namespace Makima.Models
         public string CategoryId { get; set; }
         public string Category { get; set; }
         public string Size { get; set; }
-        public int Comments { get; set; }
-        public string Trusted { get; set; }
-        public string Remake { get; set; }
         public string Description { get; set; }
+        public Brush StatusSeeders { get; set; }
+        public Brush StatusLeechers { get; set; }
     }
 }

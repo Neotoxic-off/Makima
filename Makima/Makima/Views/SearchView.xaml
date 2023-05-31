@@ -74,8 +74,8 @@
 
                                         <Button Grid.Column="0" Width="30" Height="30" Style="{StaticResource ItemButton}" Content="{materialIcons:MaterialIconExt Kind=Download}" Command="{Binding ElementName=Searches, Path=DataContext.DownloadCommand}" CommandParameter="{Binding Link}"/>
                                         <Label Margin="10,0,0,0" Grid.Column="1" Content="{Binding Title}" Foreground="{StaticResource Normal}"/>
-                                        <Label Margin="10,0,0,0" Grid.Column="2" Content="{Binding Seeders}" Foreground="{StaticResource Normal}"/>
-                                        <Label Margin="10,0,0,0" Grid.Column="3" Content="{Binding Leechers}" Foreground="{StaticResource Normal}"/>
+                                        <Label Margin="10,0,0,0" Grid.Column="2" Content="{Binding Seeders}" Foreground="{Binding StatusSeeders}"/>
+                                        <Label Margin="10,0,0,0" Grid.Column="3" Content="{Binding Leechers}" Foreground="{Binding StatusLeechers}"/>
                                         <Label Margin="10,0,0,0" Grid.Column="4" Content="{Binding Downloads}" Foreground="{StaticResource Normal}"/>
                                     </Grid>
                                 </Border>
