@@ -16,12 +16,12 @@ namespace Makima.Models
             $"{Root.Path}\\Cache",
             true
         );
-        public static FolderModel GamesFolder = new FolderModel(
+        public static FolderModel AnimeFolder = new FolderModel(
             $"{Root.Path}\\Anime",
             true
         );
-        public static FolderModel LibraryFolder = new FolderModel(
-            $"{Root.Path}\\Library",
+        public static FolderModel TorrentFolder = new FolderModel(
+            $"{Root.Path}\\Torrent",
             true
         );
         public static FolderModel LogFolder = new FolderModel(

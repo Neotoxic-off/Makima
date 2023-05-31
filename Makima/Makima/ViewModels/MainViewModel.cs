@@ -50,6 +50,12 @@ namespace Makima.ViewModels
             get { return (_searchView); }
             set { SetProperty(ref _searchView, value); }
         }
+        private Views.LibraryView _libraryView = null;
+        public Views.LibraryView LibraryView
+        {
+            get { return (_libraryView); }
+            set { SetProperty(ref _libraryView, value); }
+        }
         private Views.SettingsView _settingsView = null;
         public Views.SettingsView SettingsView
         {
@@ -77,12 +83,14 @@ namespace Makima.ViewModels
             Settings.LoadVersion();
 
             AnimeView = new AnimeView();
+            LibraryView = new LibraryView();
             SearchView = new SearchView();
             SettingsView = new SettingsView();
 
             Bind = new Dictionary<string, (UserControl view, bool dynamic, object param)>()
             {
                 { "Anime", (AnimeView, false, null) },
+                { "Library", (LibraryView, false, null) },
                 { "Search", (SearchView, false, null) },
                 { "Settings", (SettingsView, false, null) }
             };

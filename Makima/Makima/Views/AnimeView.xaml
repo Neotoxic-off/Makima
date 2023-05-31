@@ -9,6 +9,7 @@
         FontFamily="{StaticResource Dosis}"
         Background="{StaticResource Background}"
         Foreground="{StaticResource Normal}"
+             FontSize="14"
         d:DesignHeight="900" d:DesignWidth="1200">
 
     <UserControl.DataContext>
@@ -24,36 +25,31 @@
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="7" Margin="0,10,10,10">
-                <Button Style="{StaticResource FullButtonGreen}" Command="{Binding AddLibraryCommand}" Content="Add library" Margin="10,0,10,0"/>
-            </Grid>
-
-            <Grid Grid.Column="2">
-                <Button Style="{StaticResource RoundButton}">
-                    <Path Data="{StaticResource Database}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
-                </Button>
-            </Grid>
-
-            <Grid Grid.Column="3">
-                <TextBlock Text="{Binding Database.Collection.Count, StringFormat='Databases: {0}'}" VerticalAlignment="Center" FontSize="15"/>
-            </Grid>
-
-            <Grid Grid.Column="0">
+            <Grid Grid.Column="1">
                 <Button Style="{StaticResource RoundButton}">
                     <Path Data="{StaticResource Collection}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
                 </Button>
             </Grid>
 
-            <Grid Grid.Column="1">
-                <TextBlock Text="{Binding Database.Database.Series.Count, StringFormat='Series: {0}'}" VerticalAlignment="Center" FontSize="15"/>
+            <Grid Grid.Column="2">
+                <TextBlock Text="{Binding Database.Database.Series.Count, StringFormat='Series: {0}'}" VerticalAlignment="Center"/>
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <Button Style="{StaticResource RoundButton}">
+                    <Path Data="{StaticResource Database}" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="{StaticResource Normal}" Stretch="Uniform"/>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Column="4">
+                <TextBlock Text="{Binding Database.Collection.Count, StringFormat='Databases: {0}'}" VerticalAlignment="Center"/>
             </Grid>
         </Grid>
 
@@ -120,7 +116,7 @@
                 </Grid>
             </Border>
         </Grid>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Margin="20,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="75"/>
                 <ColumnDefinition Width="250"/>
@@ -128,14 +124,15 @@
                 <ColumnDefinition Width="75"/>
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="130"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Content="Season:" Foreground="{StaticResource Normal}" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                <Label Grid.Row="0" Content="Season:" Foreground="{StaticResource Normal}" FontWeight="Bold" VerticalContentAlignment="Center"/>
             </Grid>
 
             <Grid Grid.Column="1">
@@ -150,7 +147,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Label Grid.Column="3" Content="Episode:" Foreground="{StaticResource Normal}" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                <Label Grid.Column="3" Content="Episode:" Foreground="{StaticResource Normal}" FontWeight="Bold" VerticalContentAlignment="Center"/>
             </Grid>
 
             <Grid Grid.Column="4">
@@ -162,6 +159,10 @@
             </Grid>
 
             <Grid Grid.Column="6">
+                <Button Style="{StaticResource FullButtonGreen}" Command="{Binding AddLibraryCommand}" Content="Add library" Margin="10,0,10,0"/>
+            </Grid>
+
+            <Grid Grid.Column="7">
                 <Button Style="{StaticResource FullButtonPink}" Command="{Binding WatchCommand}" Content="Watch"/>
             </Grid>
         </Grid>
