@@ -9,7 +9,7 @@
         FontFamily="{StaticResource Dosis}"
         Background="{StaticResource Background}"
         Foreground="{StaticResource Normal}"
-             FontSize="14"
+        FontSize="14"
         d:DesignHeight="900" d:DesignWidth="1200">
 
     <UserControl.DataContext>
@@ -27,7 +27,6 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
@@ -36,10 +35,6 @@
 
             <Grid Grid.Column="1">
                 <TextBlock Text="{Binding Database.Database.Series.Count, StringFormat='Series: {0}'}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Grid>
-
-            <Grid Grid.Column="2">
-                <TextBlock Text="{Binding Database.Collection.Count, StringFormat='Databases: {0}'}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
         </Grid>
 

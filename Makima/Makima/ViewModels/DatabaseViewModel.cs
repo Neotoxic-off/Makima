@@ -14,7 +14,6 @@ namespace Makima.ViewModels
 {
     public class DatabaseViewModel: BaseViewModel
     {
-        private string Extension { get; set; }
         private ObservableCollection<DatabaseModel> _collection;
         public ObservableCollection<DatabaseModel> Collection
         {
@@ -42,7 +41,6 @@ namespace Makima.ViewModels
 
         public DatabaseViewModel()
         {
-            Extension = "mlf";
             Cache = new CacheViewModel();
             Library = new ObservableCollection<SeriesModel>();
             Database = new DatabaseModel()
@@ -70,7 +68,7 @@ namespace Makima.ViewModels
         private void Load()
         {
             DatabaseModel data = null;
-            string[] files = Directory.GetFiles(SettingsModel.Root.Path, $"*.{Extension}", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(SettingsModel.Root.Path, $"*.{SettingsModel.Extension}", SearchOption.AllDirectories);
 
             foreach (string file in files)
             {
@@ -259,7 +257,7 @@ namespace Makima.ViewModels
 
         private void Save(DatabaseModel db)
         {
-            string complete = $"{SettingsModel.AnimeFolder.Path}/{db.ID}.{Extension}";
+            string complete = $"{SettingsModel.AnimeFolder.Path}/{db.ID}.{SettingsModel.Extension}";
 
             if (File.Exists(complete) == true)
             {

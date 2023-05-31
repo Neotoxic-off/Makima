@@ -6,14 +6,227 @@
              xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
              xmlns:local="clr-namespace:Makima.Views"
              xmlns:ViewModels="clr-namespace:Makima.ViewModels"
+             xmlns:Models="clr-namespace:Makima.Models"
              mc:Ignorable="d" 
+             FontSize="14"
              d:Background="{StaticResource Background}"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
         <ViewModels:SettingsViewModel/>
     </UserControl.DataContext>
 
-    <Grid VerticalAlignment="Center">
-        <Label Content="SETTINGS PAGE" Foreground="RED"/>
+    <Grid Margin="10">
+        <Grid Grid.Row="0">
+            <TreeView Background="Transparent" Foreground="{StaticResource Normal}" BorderThickness="0">
+                <TreeViewItem Foreground="{StaticResource Normal}" IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=About}" Foreground="{StaticResource Normal}"/>
+                            <Label Grid.Column="1" Content="About" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                        </Grid>
+                    </TreeViewItem.Header>
+                    <TreeViewItem Foreground="{StaticResource Normal}">
+                        <TreeViewItem.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=InformationVariant}" Foreground="{StaticResource Normal}"/>
+                                <Label Grid.Column="1" Content="Version:" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                                <Label Grid.Column="2" Content="{Binding Version}" Foreground="{StaticResource Normal}"/>
+                            </Grid>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem Foreground="{StaticResource Normal}">
+                        <TreeViewItem.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=Memory}" Foreground="{StaticResource Normal}"/>
+                                <Label Grid.Column="1" Content="Build version:" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                                <Label Grid.Column="2" Content="{Binding BuildBits}" Foreground="{StaticResource Normal}"/>
+                            </Grid>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem Foreground="{StaticResource Normal}">
+                        <TreeViewItem.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=Sign}" Foreground="{StaticResource Normal}"/>
+                                <Label Grid.Column="1" Content="Author:" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                                <Label Grid.Column="2" Content="neo" Foreground="{StaticResource Normal}"/>
+                            </Grid>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem Foreground="{StaticResource Normal}">
+                        <TreeViewItem.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=Github}" Foreground="{StaticResource Normal}"/>
+                                <Label Grid.Column="1" Content="Source code:" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                                <Label Grid.Column="2" Content="{Binding Code}" Foreground="{StaticResource Normal}"/>
+                            </Grid>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Foreground="{StaticResource Normal}" IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=DesktopWindows}" Foreground="{StaticResource Normal}"/>
+                            <Label Grid.Column="1" Content="Environment" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                        </Grid>
+                    </TreeViewItem.Header>
+                    <TreeViewItem Foreground="{StaticResource Normal}">
+                        <TreeViewItem.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=OilSaver}" Foreground="{StaticResource Normal}"/>
+                                <Label Grid.Column="1" Content="OS build:" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                                <Label Grid.Column="2" Content="{Binding Bits}" Foreground="{StaticResource Normal}"/>
+                            </Grid>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem Foreground="{StaticResource Normal}">
+                        <TreeViewItem.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=MicrosoftWindows}" Foreground="{StaticResource Normal}"/>
+                                <Label Grid.Column="1" Content="Windows version:" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                                <Label Grid.Column="2" Content="{Binding OSVersion}" Foreground="{StaticResource Normal}"/>
+                            </Grid>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Foreground="{StaticResource Normal}" IsExpanded="True">
+                    <TreeViewItem.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=Settings}" Foreground="{StaticResource Normal}"/>
+                            <Label Grid.Column="1" Content="Configuration" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                        </Grid>
+                    </TreeViewItem.Header>
+                    <TreeViewItem Foreground="{StaticResource Normal}">
+                        <TreeViewItem.Header>
+                            <TreeViewItem Foreground="{StaticResource Normal}" IsExpanded="True">
+                                <TreeViewItem.Header>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=Folder}" Foreground="{StaticResource Normal}"/>
+                                        <Label Grid.Column="1" Content="Folders" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                                    </Grid>
+                                </TreeViewItem.Header>
+                                <TreeViewItem Foreground="{StaticResource Normal}">
+                                    <TreeViewItem.Header>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=Database}" Foreground="{StaticResource Normal}"/>
+                                            <Label Grid.Column="1" Content="Root" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                                            <Label Grid.Column="2" Content="{Binding Source={x:Static Models:SettingsModel.Root}, Path=Path}" Foreground="{StaticResource Normal}"/>
+                                        </Grid>
+                                    </TreeViewItem.Header>
+                                </TreeViewItem>
+                                <TreeViewItem Foreground="{StaticResource Normal}">
+                                    <TreeViewItem.Header>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=Cached}" Foreground="{StaticResource Normal}"/>
+                                            <Label Grid.Column="1" Content="Cache:" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                                            <Label Grid.Column="2" Content="{Binding Source={x:Static Models:SettingsModel.CacheFolder}, Path=Path}" Foreground="{StaticResource Normal}"/>
+                                        </Grid>
+                                    </TreeViewItem.Header>
+                                </TreeViewItem>
+                                <TreeViewItem Foreground="{StaticResource Normal}">
+                                    <TreeViewItem.Header>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=LibraryMovie}" Foreground="{StaticResource Normal}"/>
+                                            <Label Grid.Column="1" Content="Anime:" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                                            <Label Grid.Column="2" Content="{Binding Source={x:Static Models:SettingsModel.AnimeFolder}, Path=Path}" Foreground="{StaticResource Normal}"/>
+                                        </Grid>
+                                    </TreeViewItem.Header>
+                                </TreeViewItem>
+                                <TreeViewItem Foreground="{StaticResource Normal}">
+                                    <TreeViewItem.Header>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=MessageAlert}" Foreground="{StaticResource Normal}"/>
+                                            <Label Grid.Column="1" Content="Logs:" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                                            <Label Grid.Column="2" Content="{Binding Source={x:Static Models:SettingsModel.LogFolder}, Path=Path}" Foreground="{StaticResource Normal}"/>
+                                        </Grid>
+                                    </TreeViewItem.Header>
+                                </TreeViewItem>
+                                <TreeViewItem Foreground="{StaticResource Normal}">
+                                    <TreeViewItem.Header>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Content="{materialIcons:MaterialIconExt Kind=Download}" Foreground="{StaticResource Normal}"/>
+                                            <Label Grid.Column="1" Content="Torrents:" Foreground="{StaticResource Normal}" FontWeight="Bold"/>
+                                            <Label Grid.Column="2" Content="{Binding Source={x:Static Models:SettingsModel.TorrentFolder}, Path=Path}" Foreground="{StaticResource Normal}"/>
+                                        </Grid>
+                                    </TreeViewItem.Header>
+                                </TreeViewItem>
+                            </TreeViewItem>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                </TreeViewItem>
+            </TreeView>
+        </Grid>
     </Grid>
 </UserControl>

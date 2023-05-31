@@ -8,6 +8,7 @@ namespace Makima.Models
 {
     public class SettingsModel
     {
+        public static string Extension = "mal";
         public static FolderModel Root = new FolderModel(
             $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\Makima",
             true
@@ -21,7 +22,7 @@ namespace Makima.Models
             true
         );
         public static FolderModel TorrentFolder = new FolderModel(
-            $"Torrents",
+            $"{Environment.CurrentDirectory}\\Torrents",
             true
         );
         public static FolderModel LogFolder = new FolderModel(

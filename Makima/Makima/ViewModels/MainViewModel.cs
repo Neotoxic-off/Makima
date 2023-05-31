@@ -90,7 +90,7 @@ namespace Makima.ViewModels
             Bind = new Dictionary<string, (UserControl view, bool dynamic, object param)>()
             {
                 { "Anime", (AnimeView, false, null) },
-                { "Library", (LibraryView, false, null) },
+                { "Library", (LibraryView, true, null) },
                 { "Search", (SearchView, false, null) },
                 { "Settings", (SettingsView, false, null) }
             };

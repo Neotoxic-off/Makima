@@ -16,13 +16,6 @@ namespace Makima.ViewModels
             set { SetProperty(ref _version, value); }
         }
 
-        private string _profile = "https://avatars.githubusercontent.com/u/44700383?v=4";
-        public string Profile
-        {
-            get { return _profile; }
-            set { SetProperty(ref _profile, value); }
-        }
-
         private string _code = "https://github.com/Neotoxic-off/Makima";
         public string Code
         {
@@ -30,18 +23,41 @@ namespace Makima.ViewModels
             set { SetProperty(ref _code, value); }
         }
 
-        private string _discord = "https://discord.gg/vW5PA5VASb";
-        public string Discord
-        {
-            get { return _discord; }
-            set { SetProperty(ref _discord, value); }
-        }
-
         private string _github = "https://github.com/Neotoxic-off";
         public string Github
         {
             get { return _github; }
             set { SetProperty(ref _github, value); }
+        }
+
+        private string _bits;
+        public string Bits
+        {
+            get { return _bits; }
+            set { SetProperty(ref _bits, value); }
+        }
+
+        private string _buildBits;
+        public string BuildBits
+        {
+            get { return _buildBits; }
+            set { SetProperty(ref _buildBits, value); }
+        }
+
+        private OperatingSystem _osVersion;
+        public OperatingSystem OSVersion
+        {
+            get { return _osVersion; }
+            set { SetProperty(ref _osVersion, value); }
+        }
+
+        public SettingsViewModel()
+        {
+            LoadVersion();
+
+            Bits = (Environment.Is64BitOperatingSystem == true ? "x64" : "x86");
+            BuildBits = (Environment.Is64BitProcess == true ? "x64" : "x86");
+            OSVersion = Environment.OSVersion;
         }
 
         public void LoadVersion()
