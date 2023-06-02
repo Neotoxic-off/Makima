@@ -62,6 +62,12 @@ namespace Makima.ViewModels
             get { return (_settingsView); }
             set { SetProperty(ref _settingsView, value); }
         }
+        private Views.DownloadsView _downloadsView = null;
+        public Views.DownloadsView DownloadsView
+        {
+            get { return (_downloadsView); }
+            set { SetProperty(ref _downloadsView, value); }
+        }
         private LoggerViewModel _logger;
         public LoggerViewModel Logger
         {
@@ -86,13 +92,15 @@ namespace Makima.ViewModels
             LibraryView = new LibraryView();
             SearchView = new SearchView();
             SettingsView = new SettingsView();
+            DownloadsView = new DownloadsView();
 
             Bind = new Dictionary<string, (UserControl view, bool dynamic, object param)>()
             {
                 { "Anime", (AnimeView, false, null) },
                 { "Library", (LibraryView, true, null) },
                 { "Search", (SearchView, false, null) },
-                { "Settings", (SettingsView, false, null) }
+                { "Settings", (SettingsView, false, null) },
+                { "Downloads", (DownloadsView, true, null) }
             };
             CurrentView = Bind["Anime"].view;
         }
@@ -150,7 +158,7 @@ namespace Makima.ViewModels
 
         private void Navigate(object data)
         {
-            string key = "Search";
+            string key = "Anime";
 
             if (Bind.ContainsKey(data.ToString()) == true)
                 key = data.ToString();

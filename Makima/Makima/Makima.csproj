@@ -246,9 +246,13 @@
     <Compile Include="Models\SettingsModel.cs" />
     <Compile Include="ViewModels\AnimeViewModel.cs" />
     <Compile Include="ViewModels\LibraryViewModel.cs" />
+    <Compile Include="ViewModels\DownloadsViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="Views\LibraryView.xaml.cs">
       <DependentUpon>LibraryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DownloadsView.xaml.cs">
+      <DependentUpon>DownloadsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SearchView.xaml.cs">
       <DependentUpon>SearchView.xaml</DependentUpon>
@@ -305,6 +309,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\LibraryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DownloadsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

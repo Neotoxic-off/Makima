@@ -11,11 +11,13 @@ namespace Makima.Models
     public class FileModel
     {
         public string Path { get; set; }
+        public string Name { get; set; }
         public bool Exists { get; set; }
         public bool Force { get; set; }
 
         public FileModel(string path)
         {
+            this.Name = System.IO.Path.GetFileName(path);
             this.Path = path;
             this.Exists = File.Exists(path);
         }
