@@ -1,3 +1,6 @@
+# 2.1.1.0
+- Add downloads management
+
 # 2.1.0.0
 - Visual update
 - Add library managment
