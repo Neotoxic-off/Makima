@@ -94,11 +94,9 @@ namespace Makima.ViewModels
 
         private async Task<BitmapImage> Download(string path, string name)
         {
-            Stream stream = null;
-            Uri uri = null;
+            Uri uri = await Search(name);
+            Stream stream = await Client.GetStreamAsync(uri);
 
-            uri = await Search(name);
-            stream = await Client.GetStreamAsync(uri);
             using (FileStream outputFileStream = new FileStream(path, FileMode.Create))
             {
                 stream.CopyTo(outputFileStream);

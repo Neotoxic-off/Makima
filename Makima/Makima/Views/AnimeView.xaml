@@ -18,71 +18,34 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Column="0">
-                <Separator Height="5" Background="{StaticResource Normal}"/>
-            </Grid>
-
-            <Grid Grid.Column="1">
-                <TextBlock Text="{Binding Database.Database.Series.Count, StringFormat='Series: {0}'}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Grid>
-        </Grid>
-
-        <Grid Grid.Row="1">
             <Border Margin="20">
                 <Grid>
                     <Grid Grid.Column="0">
                         <ScrollViewer VerticalScrollBarVisibility="Hidden">
                             <StackPanel>
-                                <ItemsControl x:Name="Series" ItemsSource="{Binding Database.Database.Series}"  SizeChanged="ItemsControl_SizeChanged">
+                                <ItemsControl x:Name="Series" ItemsSource="{Binding Database.Database.Series}" SizeChanged="ItemsControl_SizeChanged">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
-                                            <UniformGrid Columns="3"/>
+                                            <UniformGrid Columns="5"/>
                                         </ItemsPanelTemplate>
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <Border Background="Transparent" Width="315" Margin="5">
+                                            <Border Background="Transparent" Width="200" Height="300">
                                                 <Border.Style>
                                                     <Style TargetType="Border">
                                                         <Setter Property="BorderThickness" Value="1"/>
                                                     </Style>
                                                 </Border.Style>
                                                 <Button Style="{StaticResource ItemButton}" Command="{Binding ElementName=Series, Path=DataContext.GetSelectedCommand}" CommandParameter="{Binding Name}">
-                                                    <Border BorderBrush="{StaticResource Panel}" CornerRadius="5" BorderThickness="1" Width="315">
+                                                    <Border BorderBrush="{StaticResource Panel}" CornerRadius="5" BorderThickness="1">
                                                         <Grid>
-                                                            <Grid.RowDefinitions>
-                                                                <RowDefinition Height="2*"/>
-                                                                <RowDefinition Height="*"/>
-                                                            </Grid.RowDefinitions>
-                                                            <Grid Grid.Row="0">
-                                                                <Image Source="{Binding Splash}" Height="200" Stretch="UniformToFill"/>
-                                                            </Grid>
-                                                            <Grid Grid.Row="1">
-                                                                <Grid.Background>
-                                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                                                        <GradientStop Color="{StaticResource ColorPanel}" Offset="0.0" />
-                                                                        <GradientStop Color="{StaticResource ColorPanel}" Offset="0.5" />
-                                                                        <GradientStop Color="{StaticResource ColorPink}" Offset="1.1" />
-                                                                    </LinearGradientBrush>
-                                                                </Grid.Background>
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition Height="*"/>
-                                                                    <RowDefinition Height="*"/>
-                                                                </Grid.RowDefinitions>
-                                                                <TextBlock Margin="0,5,0,0" Grid.Row="0" Text="{Binding Name}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
-                                                                <TextBlock Grid.Row="1" Text="{Binding Seasons.Count, StringFormat='Seasons: {0}'}" FontWeight="Bold" HorizontalAlignment="Center" FontSize="15"/>
-                                                            </Grid>
+                                                            <Image Source="{Binding Splash}" Stretch="UniformToFill"/>
                                                         </Grid>
                                                     </Border>
                                                 </Button>
@@ -96,7 +59,7 @@
                 </Grid>
             </Border>
         </Grid>
-        <Grid Grid.Row="2" Margin="20,0,0,0">
+        <Grid Grid.Row="1" Margin="20,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="75"/>
                 <ColumnDefinition Width="250"/>

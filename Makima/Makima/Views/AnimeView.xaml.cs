@@ -60,8 +60,8 @@ namespace Makima.Views
 
         private int CalculateDesiredColumns(double controlWidth)
         {
-            const double elementWidth = 330;
-            const double margin = 5;
+            const double elementWidth = 215;
+            const double margin = 0;
             int numElementsPerRow = (int)Math.Floor((controlWidth - margin) / (elementWidth + margin));
             int maxElements = numElementsPerRow * 5;
             int totalElements = Context.Database.Database.Series.Count();

@@ -13,8 +13,8 @@
         Foreground="{StaticResource Normal}"
         Height="900"
         Width="1200"
-        MinHeight="800"
-        MinWidth="575"
+        MinHeight="900"
+        MinWidth="1200"
         Title="{Binding Settings.Version}">
 
     <Window.DataContext>
@@ -27,36 +27,30 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <Grid Grid.Row="0" Background="{StaticResource Panel}"/>
-
-        <Grid Grid.Row="1">
+        
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="70"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="70"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Background="{StaticResource Panel}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="70"/>
-                    <RowDefinition Height="70"/>
-                    <RowDefinition Height="70"/>
-                    <RowDefinition Height="70"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="70"/>
-                </Grid.RowDefinitions>
 
-                <Button Grid.Row="0" Style="{StaticResource InvisibleButton}" Content="{materialIcons:MaterialIconExt Kind=Apps}" Command="{Binding NavigateCommand}" CommandParameter="Anime"/>
-                <Button Grid.Row="1" Style="{StaticResource InvisibleButton}" Content="{materialIcons:MaterialIconExt Kind=Folder}" Command="{Binding NavigateCommand}" CommandParameter="Library"/>
-                <Button Grid.Row="2" Style="{StaticResource InvisibleButton}" Content="{materialIcons:MaterialIconExt Kind=Magnify}" Command="{Binding NavigateCommand}" CommandParameter="Search"/>
-                <Button Grid.Row="3" Style="{StaticResource InvisibleButton}" Content="{materialIcons:MaterialIconExt Kind=Download}" Command="{Binding NavigateCommand}" CommandParameter="Downloads"/>
-                
-                <Button Grid.Row="5" Style="{StaticResource InvisibleButton}" Content="{materialIcons:MaterialIconExt Kind=Settings}" Command="{Binding NavigateCommand}" CommandParameter="Settings"/>
-            </Grid>
-            
-            <Border Grid.Column="1" CornerRadius="5" Background="{StaticResource Background}" BorderBrush="{StaticResource Panel}" BorderThickness="2">
+            <Button Grid.Column="0" Style="{StaticResource InvisibleButton}" Content="{materialIcons:MaterialIconExt Kind=Apps}" Command="{Binding NavigateCommand}" CommandParameter="Anime"/>
+            <Button Grid.Column="1" Style="{StaticResource InvisibleButton}" Content="{materialIcons:MaterialIconExt Kind=Folder}" Command="{Binding NavigateCommand}" CommandParameter="Library"/>
+            <Button Grid.Column="2" Style="{StaticResource InvisibleButton}" Content="{materialIcons:MaterialIconExt Kind=Magnify}" Command="{Binding NavigateCommand}" CommandParameter="Search"/>
+            <Button Grid.Column="3" Style="{StaticResource InvisibleButton}" Content="{materialIcons:MaterialIconExt Kind=Download}" Command="{Binding NavigateCommand}" CommandParameter="Downloads"/>
+
+            <Button Grid.Column="5" Style="{StaticResource InvisibleButton}" Content="{materialIcons:MaterialIconExt Kind=Settings}" Command="{Binding NavigateCommand}" CommandParameter="Settings"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Border CornerRadius="5" Background="{StaticResource Background}" BorderBrush="{StaticResource Panel}" BorderThickness="2">
                 <Grid Margin="10">
                     <ContentControl Content="{Binding CurrentView}"/>
                 </Grid>
