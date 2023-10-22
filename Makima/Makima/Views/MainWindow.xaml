@@ -27,18 +27,18 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="0" Style="{StaticResource InvisibleButton}" Content="{materialIcons:MaterialIconExt Kind=Apps}" Command="{Binding NavigateCommand}" CommandParameter="Anime"/>
@@ -51,7 +51,7 @@
 
         <Grid Grid.Row="1">
             <Border CornerRadius="5" Background="{StaticResource Background}" BorderBrush="{StaticResource Panel}" BorderThickness="2">
-                <Grid Margin="10">
+                <Grid>
                     <ContentControl Content="{Binding CurrentView}"/>
                 </Grid>
             </Border>

@@ -23,7 +23,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <Border Margin="20">
+            <Border>
                 <Grid>
                     <Grid Grid.Column="0">
                         <ScrollViewer VerticalScrollBarVisibility="Hidden">
